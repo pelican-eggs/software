@@ -2,60 +2,60 @@
 
 ### Code Server
 
-* [Code-Server](/software/code-server)
+* [Code-Server](/code-server)
 
 ### Elasticsearch
 
-* [Elasticsearch](/software/elasticsearch)
+* [Elasticsearch](/elasticsearch)
 
 ### Folding@Home
 
-* [Folding@Home](/software/foldingathome)
+* [Folding@Home](/foldingathome)
 
 ### Forgejo
 
-* [Forgejo](/software/forgejo)
+* [Forgejo](/forgejo)
 
 ### Gitea
 
-* [Gitea](/software/gitea)
+* [Gitea](/gitea)
 
 ### Grafana
 
-* [Grafana](/software/grafana)
+* [Grafana](/grafana)
 
 ### haste-server
 
-* [haste-server](/software/haste-server)
+* [haste-server](/haste-server)
 
 ### LanguageTool
 
-* [languagetool](/software/languagetool)
+* [languagetool](/languagetool)
 
 ### Meilisearch
 
-* [Meilisearch](/software/meilisearch)
+* [Meilisearch](/meilisearch)
 
 ### Owncast
 
-* [owncast](/software/owncast)
+* [owncast](/owncast)
 
 ### RabbitMQ
 
-* [rabbitmq](/software/rabbitmq)
+* [rabbitmq](/rabbitmq)
 
 ### Reposilite
 
-* [Reposilite](/software/reposilite)
+* [Reposilite](/reposilite)
 
 ### Uptime Kuma
 
-* [Uptime Kuma](/software/uptime-kuma)
+* [Uptime Kuma](/uptime-kuma)
 
 ### Yarr
 
-* [yarr](/software/yarr)
+* [yarr](/yarr)
 
 ### 5e Tools
 
-* [5e Tools](/software/5e-tools)
+* [5e Tools](/5e-tools)
