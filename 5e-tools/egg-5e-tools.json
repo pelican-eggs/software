@@ -1,12 +1,13 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2022-11-27T17:50:04+01:00",
+    "exported_at": "2024-06-02T14:40:56+00:00",
     "name": "5e Tools",
     "author": "pterodactyl@demi.cloud",
+    "uuid": "ae9f372e-01d7-4c9b-a109-e49990d68d45",
     "description": "A suite of tools for 5th Edition Dungeons & Dragons players and Dungeon Masters.",
     "features": null,
     "docker_images": {
@@ -36,6 +37,7 @@
             "user_viewable": false,
             "user_editable": false,
             "rules": "required|url",
+            "sort": null,
             "field_type": "text"
         }
     ]
