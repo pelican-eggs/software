@@ -24,7 +24,7 @@
         "installation": {
             "container": "ghcr.io/parkervcp/installers:debian",
             "entrypoint": "bash",
-            "script": "#!/bin/bash\r\n#\r\n# Folding@Home install script\r\n#\r\n# Created by Fuggschen\r\n\r\nexport DEBIAN_FRONTEND=noninteractive\r\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] \u0026\u0026 echo \"64bit\" || echo \"arm64\")\r\ncd /tmp\r\n\r\necho \"Removing previous Version\"\r\nmv /mnt/server/config.xml /tmp/config.xml\r\nrm -rf /mnt/server/*\r\n\r\necho \"Installing dependencies\"\r\napt update \u0026\u0026 apt upgrade -y \u0026\u0026 apt install curl bzip2 -y\r\n\r\necho \"Downloading FAHClient\"\r\ncurl -sSL -o fahclient.tar.bz2 https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-${ARCH}/${FAH_VERSION}/latest.tar.bz2\r\n\r\necho \"Installing FAHClient\"\r\ntar -xjf fahclient.tar.bz2 -C /mnt/server --strip-components=1\r\n\r\necho \"Cleaning up..\"\r\nrm -f fahclient.tar.bz2\r\nrm -f /mnt/server/sample-config.xml\r\nmv /tmp/config.xml /mnt/server/config.xml\r\n\r\nFILE=/mnt/server/config.xml\r\nif [[ ! -f  $FILE ]]\r\nthen\r\necho \"Setting up config.xml\"\r\ncat \u003e $FILE \u003c\u003c EOF\r\n\u003cconfig\u003e\r\n  \u003c!-- Folding Slots --\u003e\r\n  \u003cslot id='0' type='CPU'/\u003e\r\n  \u003c!-- Maximum CPU Cores to use. Can't be more than 64 --\u003e\r\n  \u003ccpus v='64'/\u003e\r\n\u003c/config\u003e\r\nEOF\r\nfi\r\n\r\necho \"Done!\""
+            "script": "#!/bin/bash\r\n#\r\n# Folding@Home install script\r\n#\r\n# Created by Fuggschen\r\n\r\nexport DEBIAN_FRONTEND=noninteractive\r\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] \u0026\u0026 echo \"64bit\" || echo \"arm64\")\r\ncd /tmp\r\n\r\necho \"Removing previous Version\"\r\nmv /mnt/server/config.xml /tmp/config.xml\r\nrm -rf /mnt/server/*\r\n\r\necho \"Installing dependencies\"\r\napt update \u0026\u0026 apt upgrade -y \u0026\u0026 apt install curl bzip2 -y\r\n\r\necho \"Downloading FAHClient\"\r\ncurl -sSL -o fahclient.tar.bz2 https://download.foldingathome.org/releases/v7/public/fahclient/debian-stable-${ARCH}/release/fahclient_${FAH_VERSION}-${ARCH}-release.tar.bz2\r\n\r\necho \"Installing FAHClient\"\r\ntar -xjf fahclient.tar.bz2 -C /mnt/server --strip-components=1\r\n\r\necho \"Cleaning up..\"\r\nrm -f fahclient.tar.bz2\r\nrm -f /mnt/server/sample-config.xml\r\nmv /tmp/config.xml /mnt/server/config.xml\r\n\r\nFILE=/mnt/server/config.xml\r\nif [[ ! -f  $FILE ]]\r\nthen\r\necho \"Setting up config.xml\"\r\ncat \u003e $FILE \u003c\u003c EOF\r\n\u003cconfig\u003e\r\n  \u003c!-- Folding Slots --\u003e\r\n  \u003cslot id='0' type='CPU'/\u003e\r\n  \u003c!-- Maximum CPU Cores to use. Can't be more than 64 --\u003e\r\n  \u003ccpus v='64'/\u003e\r\n\u003c/config\u003e\r\nEOF\r\nfi\r\n\r\necho \"Done!\""
         }
     },
     "variables": [
@@ -70,7 +70,7 @@
         },
         {
             "name": "FaH Version",
-            "description": "Set to wanted major Folding@Home Version. Check here: https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/",
+            "description": "Set to wanted major Folding@Home Version. Check here: https://download.foldingathome.org/releases/v7/public/fahclient/debian-stable-64bit/release/",
             "env_variable": "FAH_VERSION",
             "default_value": "v7.6",
             "user_viewable": true,
