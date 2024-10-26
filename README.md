@@ -32,6 +32,10 @@
 
 * [languagetool](/languagetool)
 
+### Lavalink Server
+
+* [Lavalink](/lavalink)
+
 ### Meilisearch
 
 * [Meilisearch](/meilisearch)
