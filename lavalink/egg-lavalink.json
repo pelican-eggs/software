@@ -4,11 +4,11 @@
         "version": "PTDL_v2",
         "update_url": "https:\/\/raw.githubusercontent.com\/pelican-eggs\/software\/refs\/heads\/main\/lavalink\/egg-lavalink.json"
     },
-    "exported_at": "2024-10-26T06:09:37+00:00",
+    "exported_at": "2024-10-26T06:33:56+00:00",
     "name": "Lavalink",
     "author": "damuffin36@gmail.com",
     "uuid": "1c859893-2259-4972-82ca-e909737cea78",
-    "description": "A standalone audio sending node based on Lavaplayer and Koe. Allows for sending audio without it ever reaching any of your shards.\r\nDescription taken from https:\/\/github.com\/freyacodes\/Lavalink",
+    "description": "A standalone audio sending node based on Lavaplayer and Koe. Allows for sending audio without it ever reaching any of your shards.\nDescription taken from https:\/\/github.com\/lavalink-devs\/Lavalink",
     "features": [],
     "docker_images": {
         "ghcr.io\/parkervcp\/yolks:java_21": "ghcr.io\/parkervcp\/yolks:java_21"
