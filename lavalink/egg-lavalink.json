@@ -1,10 +1,10 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "version": "PTDL_v2",
+        "version": "PLCN_v1",
         "update_url": "https:\/\/raw.githubusercontent.com\/pelican-eggs\/software\/refs\/heads\/main\/lavalink\/egg-lavalink.json"
     },
-    "exported_at": "2024-10-26T06:33:56+00:00",
+    "exported_at": "2024-11-20T10:10:31+00:00",
     "name": "Lavalink",
     "author": "damuffin36@gmail.com",
     "uuid": "1c859893-2259-4972-82ca-e909737cea78",
@@ -30,6 +30,7 @@
     },
     "variables": [
         {
+            "sort": 1,
             "name": "Version",
             "description": "",
             "env_variable": "VERSION",
@@ -39,11 +40,10 @@
             "rules": [
                 "required",
                 "string"
-            ],
-            "sort": 1,
-            "field_type": "text"
+            ]
         },
         {
+            "sort": 2,
             "name": "GITHUB_PACKAGE",
             "description": "",
             "env_variable": "GITHUB_PACKAGE",
@@ -53,11 +53,10 @@
             "rules": [
                 "required",
                 "string"
-            ],
-            "sort": 2,
-            "field_type": "text"
+            ]
         },
         {
+            "sort": 3,
             "name": "Match",
             "description": "",
             "env_variable": "MATCH",
@@ -67,9 +66,7 @@
             "rules": [
                 "required",
                 "string"
-            ],
-            "sort": 3,
-            "field_type": "text"
+            ]
         }
     ]
 }
