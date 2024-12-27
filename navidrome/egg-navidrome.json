@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-12-27T21:04:08+01:00",
+    "exported_at": "2024-12-27T22:06:30+01:00",
     "name": "Navidrome",
     "author": "felixseiboldt@gmail.com",
     "description": "Navidrome Music Server - A lightweight music server for your personal collection.",
@@ -32,19 +32,9 @@
             "name": "Navidrome BaseURL",
             "description": "Base URL for Navidrome",
             "env_variable": "ND_BASEURL",
-            "default_value": "localhost:4533",
+            "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:60",
-            "field_type": "text"
-        },
-        {
-            "name": "Navidrome DB",
-            "description": "Database",
-            "env_variable": "ND_DATABASE_URL",
-            "default_value": "sqlite3:\/\/\/home\/container\/navidrome.db",
-            "user_viewable": true,
-            "user_editable": false,
             "rules": "required|string|max:60",
             "field_type": "text"
         },
@@ -54,7 +44,7 @@
             "env_variable": "ND_DATAFOLDER",
             "default_value": "\/home\/container\/data",
             "user_viewable": true,
-            "user_editable": false,
+            "user_editable": true,
             "rules": "required|string|max:60",
             "field_type": "text"
         },
@@ -69,13 +59,83 @@
             "field_type": "text"
         },
         {
-            "name": "ND_PORT",
+            "name": "Port",
             "description": "",
             "env_variable": "ND_PORT",
             "default_value": "4533",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|int|max:65535",
+            "field_type": "text"
+        },
+        {
+            "name": "Spotify Dev ID",
+            "description": "Your Spotify Developer ID for Spotify Integration.",
+            "env_variable": "ND_SPOTIFY_ID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:80",
+            "field_type": "text"
+        },
+        {
+            "name": "Spotify Dev Secret",
+            "description": "",
+            "env_variable": "ND_SPOTIFY_SECRET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:80",
+            "field_type": "text"
+        },
+        {
+            "name": "LastFM API Key",
+            "description": "",
+            "env_variable": "ND_LASTFM_APIKEY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:80",
+            "field_type": "text"
+        },
+        {
+            "name": "LastFM API Secret",
+            "description": "",
+            "env_variable": "ND_LASTFM_SECRET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:280",
+            "field_type": "text"
+        },
+        {
+            "name": "Log Level",
+            "description": "Useful for troubleshooting. Possible values: error, warn, info, debug, trace",
+            "env_variable": "ND_LOGLEVEL",
+            "default_value": "info",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:5",
+            "field_type": "text"
+        },
+        {
+            "name": "Config File Location",
+            "description": "",
+            "env_variable": "ND_CONFIGFILE",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Enable Insights Collector",
+            "description": "Controls whether the server will run its Anonymous Data Collection feature to help improve the project.",
+            "env_variable": "ND_ENABLEINSIGHTSCOLLECTOR",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean|max:20",
             "field_type": "text"
         }
     ]
