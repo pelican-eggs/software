@@ -42,7 +42,7 @@
 
 ### Navidrome
 
-*[Navidrome](/navidrome)
+* [Navidrome](/navidrome)
 
 ### Owncast
 
