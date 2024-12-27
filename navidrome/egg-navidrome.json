@@ -1,0 +1,82 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-12-27T21:04:08+01:00",
+    "name": "Navidrome",
+    "author": "felixseiboldt@gmail.com",
+    "description": "Navidrome Music Server - A lightweight music server for your personal collection.",
+    "features": null,
+    "docker_images": {
+        "devilapi\/navidrome-pterodactyl:latest": "devilapi\/navidrome-pterodactyl:latest"
+    },
+    "file_denylist": [],
+    "startup": "\/bin\/bash \/home\/container\/start.sh",
+    "config": {
+        "files": "{\r\n}",
+        "startup": "{\r\n    \"done\": \"Navidrome is ready to accept requests\"\r\n}",
+        "logs": "{\r\n    \"logs\": {\r\n        \"stdout\": \"\/home\/container\/logs\/stdout.log\",\r\n        \"stderr\": \"\/home\/container\/logs\/stderr.log\"\r\n    }\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "mkdir \/mnt\/server\/music",
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Navidrome BaseURL",
+            "description": "Base URL for Navidrome",
+            "env_variable": "ND_BASEURL",
+            "default_value": "localhost:4533",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:60",
+            "field_type": "text"
+        },
+        {
+            "name": "Navidrome DB",
+            "description": "Database",
+            "env_variable": "ND_DATABASE_URL",
+            "default_value": "sqlite3:\/\/\/home\/container\/navidrome.db",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:60",
+            "field_type": "text"
+        },
+        {
+            "name": "Data Folder",
+            "description": "",
+            "env_variable": "ND_DATAFOLDER",
+            "default_value": "\/home\/container\/data",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:60",
+            "field_type": "text"
+        },
+        {
+            "name": "Navidrome Music Folder",
+            "description": "",
+            "env_variable": "ND_MUSICFOLDER",
+            "default_value": "\/home\/container\/music",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:60",
+            "field_type": "text"
+        },
+        {
+            "name": "ND_PORT",
+            "description": "",
+            "env_variable": "ND_PORT",
+            "default_value": "4533",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|int|max:65535",
+            "field_type": "text"
+        }
+    ]
+}
