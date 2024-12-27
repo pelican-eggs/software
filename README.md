@@ -40,6 +40,10 @@
 
 * [Meilisearch](/meilisearch)
 
+### Navidrome
+
+*[Navidrome](/navidrome)
+
 ### Owncast
 
 * [owncast](/owncast)
