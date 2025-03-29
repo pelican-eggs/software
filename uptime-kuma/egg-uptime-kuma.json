@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-03-29T07:50:08+00:00",
+    "exported_at": "2025-03-29T08:52:25+00:00",
     "name": "Uptime Kuma",
     "author": "eggs@goover.dev",
     "uuid": "d4118190-8de0-4d10-a5e6-50407048517b",
@@ -14,7 +14,7 @@
         "ghcr.io\/parkervcp\/apps:uptimekuma": "ghcr.io\/parkervcp\/apps:uptimekuma"
     },
     "file_denylist": [],
-    "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == \"1\" ]]; then git fetch --all && git checkout 1.23.16 --force && npm install --production && npm run download-dist; fi; \/usr\/local\/bin\/node \/home\/container\/server\/server.js --port={{SERVER_PORT}}",
+    "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == \"1\" ]]; then git fetch --all && git checkout {{PATHSPEC}} --force && npm install --production && npm run download-dist; fi; \/usr\/local\/bin\/node \/home\/container\/server\/server.js --port={{SERVER_PORT}}",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"[SERVER] INFO: Listening on \"\r\n}",
@@ -67,6 +67,16 @@
                 "boolean"
             ],
             "sort": 3
+        },
+        {
+            "name": "pathspec",
+            "description": "",
+            "env_variable": "PATHSPEC",
+            "default_value": "1.23.16",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": [],
+            "sort": 4
         }
     ]
 }
