@@ -1,0 +1,78 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/yarr/egg-yarr.yaml'
+exported_at: '2026-01-03T18:05:09+00:00'
+name: Yarr
+author: sotoluis90@gmail.com
+uuid: 5bc23405-4326-426a-a452-ee0a2dddc74b
+description: 'Yarr is a selfhosted feed aggregator'
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: './yarr -addr 0.0.0.0:{{SERVER_PORT}} -auth="{{USERNAME}}:{{PASSWORD}}" -db=./feed.sql'
+config:
+  files: {  }
+  startup:
+    done: 'starting server'
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+
+      ## get release info and download links
+      cd /mnt/server
+
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/nkanaev/yarr/releases/latest")
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")
+
+      if [ "${ARCH}" == "arm64" ]; then
+          MATCH=yarr_linux_arm64.zip
+      else
+          MATCH=yarr_linux_amd64.zip
+      fi
+
+      DOWNLOAD_URL=$(echo "${LATEST_JSON}" | jq -r ".assets[].browser_download_url" | grep -i "${MATCH}")
+
+      echo "Download url: ${DOWNLOAD_URL}"
+      curl -ssL -o yarr.zip ${DOWNLOAD_URL}
+      unzip -o yarr.zip
+      rm yarr.zip
+
+      chmod +x yarr
+
+      ## install end
+      echo "Installation completed..."
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 2
+    name: Password
+    description: 'The password needed to log in to yarr'
+    env_variable: PASSWORD
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - alpha_dash
+  -
+    sort: 1
+    name: Username
+    description: 'The username used to log in to yarr'
+    env_variable: USERNAME
+    default_value: username
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - alpha_dash
