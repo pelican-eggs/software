@@ -1,0 +1,119 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/forgejo/egg-forgejo.yaml'
+exported_at: '2026-01-03T10:28:36+00:00'
+name: Forgejo
+author: seaswimmerthefsh@gmail.com
+uuid: 5186ceff-ff39-4df8-aa87-d83dbd4b1a68
+description: |-
+  Forgejo is a community managed lightweight code hosting solution written in Go. It is published
+  under the MIT license, and is a fork of Gitea.
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist:
+  - forgejo
+startup_commands:
+  Default: './forgejo web -p {{SERVER_PORT}} -c ./app.ini'
+config:
+  files:
+    custom/app.ini:
+      parser: file
+      find:
+        DISABLE_SSH: 'DISABLE_SSH: {{server.environment.DISABLE_SSH}}'
+        SSH_PORT: 'SSH_PORT: {{server.environment.SSH_PORT}}'
+  startup:
+    done: 'Listen: '
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |-
+      ## Forgejo Installscript
+      ## Modified version of the Gitea installscript, see https://github.com/pelican-eggs/software/blob/main/gitea/egg-gitea.yaml
+
+      ## update system
+      apt update
+      apt -y install --no-install-recommends dnsutils
+
+      ## Variables
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")
+      LATEST=$(dig +short release.forgejo.org TXT | grep -oE '([0-9]+\.){2}[0-9]+(-[a-zA-Z0-9]+)*')
+
+
+      cd /mnt/server
+
+      ## install forgejo
+      if [ -z "${VERSION}" ] || [ "${VERSION}" == "latest" ]; then
+          echo -e "Downloading Forgejo $LATEST (latest)"
+          URL=https://codeberg.org/forgejo/forgejo/releases/download/v${LATEST}/forgejo-${LATEST}-linux-${ARCH}
+      else
+          echo -e "Downloading Forgejo $VERSION"
+          URL=https://codeberg.org/forgejo/forgejo/releases/download/v${VERSION}/forgejo-${VERSION}-linux-${ARCH}
+      fi
+
+      echo -e "Download URL: $URL"
+
+      curl -sSL -o forgejo $URL
+
+      chmod +x forgejo
+
+      mkdir -p custom
+
+      if [ -f "/mnt/server/custom/app.ini" ]; then
+          echo "Config file exists"
+      else
+          echo "[server]
+          LOCAL_ROOT_URL = http://${SERVER_IP}:${SERVER_PORT}/
+          DOMAIN           = ${SERVER_IP}
+          HTTP_PORT        = ${SERVER_PORT}
+          ROOT_URL         = http://${SERVER_IP}:${SERVER_PORT}/
+          DISABLE_SSH      = ${DISABLE_SSH}
+          SSH_PORT         = ${SSH_PORT}" > /mnt/server/custom/app.ini
+      fi
+
+      echo -e "-------------------------------------------------"
+      echo -e "Installation completed"
+      echo -e "-------------------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Disable SSH'
+    description: 'Disable the SSH feature when it’s not available.'
+    env_variable: DISABLE_SSH
+    default_value: false
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'in:true,false'
+  -
+    sort: 2
+    name: 'SSH Port'
+    description: 'SSH port displayed in clone URL.'
+    env_variable: SSH_PORT
+    default_value: 2020
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - integer
+      - 'between:1024,65535'
+  -
+    sort: 3
+    name: Version
+    description: 'Use either `latest` or a specific version, such as `1.21.7-0`.'
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:15'

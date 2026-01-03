@@ -1,0 +1,109 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/uptime-kuma/egg-uptime-kuma.yaml'
+exported_at: '2026-01-03T18:25:15+00:00'
+name: 'Uptime Kuma'
+author: eggs@goover.dev
+uuid: e8dba66d-3cd3-4d5d-979c-dbecc0b1468f
+description: 'Uptime Kuma is an easy-to-use self-hosted monitoring tool.'
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Uptimekuma: 'ghcr.io/pelican-eggs/apps:uptimekuma'
+file_denylist: {  }
+startup_commands:
+  Default: 'if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == "1" ]]; then npm run setup; fi; /usr/local/bin/node /home/container/server/server.js --port={{SERVER_PORT}}'
+config:
+  files: {  }
+  startup:
+    done: 'Listening on'
+  logs: {  }
+  stop: ^^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Uptime Kuma App Installation Script
+      #
+      # Server Files: /mnt/server
+      apk update
+      apk add --no-cache git curl jq file unzip make gcc g++ python3 python3-dev libtool
+      apk add --no-cache git-lfs --repository=https://dl-cdn.alpinelinux.org/alpine/latest-stable/community
+
+      ## npm update to latest
+      echo -e "Updating npm to latest....
+      "
+      if [ -d "/mnt/server/node_modules" ]; then
+          rm -fR /mnt/server/node_modules
+          npm cache verify
+      fi
+      npm install -g npm@latest
+
+      ## Uptime Kuma install & update
+      mkdir -p /mnt/server
+      cd /mnt/server
+      git config --global --add safe.directory /mnt/server
+
+      if [ -d .git ]; then
+          echo -e "Updating Uptime Kuma....
+       "
+          npm run setup
+      else
+          echo -e "Download and installing Uptime Kuma...
+      "   
+          git clone https://github.com/louislam/uptime-kuma.git .
+          npm run setup
+      fi
+
+      ## only create dir, when .git is present to prevent errors
+      if [ -d .git ]; then
+          mkdir -p /mnt/server/data
+      fi
+
+      if [ ! -f "/mnt/server/data/kuma.db" ]; then
+          cp /mnt/server/db/kuma.db /mnt/server/data/kuma.db
+      fi
+
+      ## install end
+      echo -e "-----------------------------------------"
+      echo -e "Installation completed..."
+      echo -e "-----------------------------------------"
+      exit 0
+    container: 'node:18-alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 3
+    name: 'Auto Update'
+    description: ''
+    env_variable: AUTO_UPDATE
+    default_value: 1
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - boolean
+  -
+    sort: 1
+    name: 'Git Repo Address'
+    description: "GitHub Repo to clone\r\n\r\nI.E. https://github.com/parkervcp/repo_name"
+    env_variable: GIT_ADDRESS
+    default_value: 'https://github.com/louislam/uptime-kuma'
+    user_viewable: false
+    user_editable: false
+    rules:
+      - nullable
+      - string
+  -
+    sort: 2
+    name: 'JS file'
+    description: 'The file that starts the app'
+    env_variable: JS_FILE
+    default_value: server/server.js
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string

@@ -1,0 +1,164 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/meilisearch/egg-meilisearch.yaml'
+exported_at: '2026-01-03T18:24:36+00:00'
+name: Meilisearch
+author: josdekurk@gmail.com
+uuid: 9e9ce9be-10a7-47a3-8e54-2528145a3bf3
+description: 'A lightning-fast search engine that fits effortlessly into your apps, websites, and workflow.'
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: './meilisearch --http-addr "0.0.0.0:{{SERVER_PORT}}"  --max-indexing-memory="{{SERVER_MEMORY}}mb" $([ "$NO_ANALYTICS" -eq 1 ] && echo "--no-analytics")'
+config:
+  files: {  }
+  startup:
+    done: 'Actix runtime found; starting in Actix runtime'
+  logs: {  }
+  stop: ^^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+
+      ## get release info and download links
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/meilisearch/meilisearch/releases/latest")
+      RELEASES=$(curl --silent "https://api.github.com/repos/meilisearch/meilisearch/releases")
+      MATCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "linux-amd64" || echo "linux-aarch64")
+
+      if [ -z "${VERSION}" ] || [ "${VERSION}" == "latest" ]; then
+          DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})
+      else
+          VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+          if [ "${VERSION}" == "${VERSION_CHECK}" ]; then
+              DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})
+          else
+              echo -e "defaulting to latest release"
+              DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)
+          fi
+      fi
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      ## Config file
+      FILE=/mnt/server/config.toml
+      if [ -f "$FILE" ]; then
+          echo "Config file exits"
+      else 
+          echo "Config does not exist. Making one"
+          curl -sSL -o config.toml https://raw.githubusercontent.com/meilisearch/meilisearch/latest/config.toml
+      fi
+
+      curl -sSL -o meilisearch ${DOWNLOAD_URL}
+      chmod +x meilisearch
+
+      # Make the needed directory's 
+      mkdir -p /mnt/server/dumps
+      mkdir -p /mnt/server/data.ms
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 7
+    name: 'Config Path'
+    description: 'Designates the location of the configuration file to load at launch.'
+    env_variable: MEILI_CONFIG_FILE_PATH
+    default_value: /home/container/config.toml
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+  -
+    sort: 5
+    name: 'DB PATH'
+    description: 'Designates the location where database files will be created and retrieved.'
+    env_variable: MEILI_DB_PATH
+    default_value: /home/container/data.ms
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'max:64'
+  -
+    sort: 4
+    name: 'Dumps dir'
+    description: 'Sets the directory where Meilisearch will create dump files.'
+    env_variable: MEILI_DUMP_DIR
+    default_value: /home/container/dumps
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'max:64'
+  -
+    sort: 2
+    name: Environment
+    description: "Configures the instance's environment. Value must be either production or development."
+    env_variable: MEILI_ENV
+    default_value: development
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:development,production'
+  -
+    sort: 6
+    name: 'Log level'
+    description: "Defines how much detail should be present in Meilisearch's logs."
+    env_variable: MEILI_LOG_LEVEL
+    default_value: INFO
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:INFO,WARN,ERROR,TRACE'
+  -
+    sort: 1
+    name: 'Master key'
+    description: "In production, a Master key of at least 16 bytes is mandatory\r\nSets the instance's master key, automatically protecting all routes except GET /health. This means\nyou will need a valid API key to access all other endpoints."
+    env_variable: MEILI_MASTER_KEY
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:64'
+  -
+    sort: 8
+    name: 'Max threads'
+    description: 'Sets the maximum number of threads Meilisearch can use during indexing'
+    env_variable: MEILI_MAX_INDEXING_THREADS
+    default_value: 2
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - integer
+  -
+    sort: 3
+    name: 'Disable analytics'
+    description: "Deactivates Meilisearch's built-in telemetry when provided."
+    env_variable: NO_ANALYTICS
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - boolean

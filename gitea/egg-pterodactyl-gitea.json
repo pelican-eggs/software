@@ -1,30 +1,30 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
-        "update_url": null,
-        "version": "PTDL_v2"
+        "version": "PTDL_v2",
+        "update_url": null
     },
-    "exported_at": "2024-06-02T14:40:59+00:00",
+    "exported_at": "2026-01-03T18:57:01+00:00",
     "name": "Gitea",
     "author": "mario.franze@gmail.com",
     "description": "Gitea is a community managed lightweight code hosting solution written in Go. It is published under the MIT license.",
     "features": null,
     "docker_images": {
-        "ghcr.io/parkervcp/yolks:debian": "ghcr.io/parkervcp/yolks:debian"
+        "Debian": "ghcr.io\/pelican-eggs\/yolks:debian"
     },
     "file_denylist": [],
-    "startup": "./gitea web -p {{SERVER_PORT}} -c ./app.ini",
+    "startup": ".\/gitea web -p {{SERVER_PORT}} -c .\/app.ini",
     "config": {
-        "files": "{\r\n    \"custom/app.ini\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"DISABLE_SSH\": \"DISABLE_SSH: {{server.build.env.DISABLE_SSH}}\",\r\n            \"SSH_PORT\": \"SSH_PORT: {{server.build.env.SSH_PORT}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\n    \"custom\\\/app.ini\": {\n        \"parser\": \"file\",\n        \"find\": {\n            \"DISABLE_SSH\": \"DISABLE_SSH: {{server.build.env.DISABLE_SSH}}\",\n            \"SSH_PORT\": \"SSH_PORT: {{server.build.env.SSH_PORT}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \"Listen: \"\n}",
         "logs": "{}",
-        "startup": "{\r\n    \"done\": \"Listen: \"\r\n}",
         "stop": "^^C"
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io/parkervcp/installers:debian",
-            "entrypoint": "bash",
-            "script": "## Gitea Installscript\r\n\r\n## update system\r\napt update\r\napt -y install --no-install-recommends jq curl ca-certificates\r\n\r\n## Variables\r\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] \u0026\u0026 echo \"amd64\" || echo \"arm64\")\r\nLATEST=$(curl -sSL https://dl.gitea.io/gitea/version.json | jq -r .latest.version)\r\n\r\n\r\ncd /mnt/server\r\n\r\n## install gitea\r\necho -e \"Download url: https://dl.gitea.io/gitea/${LATEST}/gitea-${LATEST}-linux-${ARCH}\"\r\nif [ -z \"${VERSION}\" ] || [ \"${VERSION}\" == \"latest\" ]; then\r\n    echo -e \"downloading Gitea $LATEST\"\r\n    curl -sSL -o gitea https://dl.gitea.io/gitea/${LATEST}/gitea-${LATEST}-linux-${ARCH}\r\nelif [ \"${VERSION}\" == \"nightly\" ]; then\r\n    echo -e \"downloading Gitea nightly\"\r\n    curl -sSL -o gitea https://dl.gitea.io/gitea/main/gitea-main-linux-${ARCH}\r\nelse\r\n    curl -sSL -o gitea https://dl.gitea.io/gitea/${VERSION}/gitea-${VERSION}-linux-${ARCH}\r\n    echo -e \"downloading Gitea $VERSION\"\r\nfi\r\n\r\nchmod +x gitea\r\n\r\nmkdir -p custom\r\n\r\nif [ -f \"/mnt/server/custom/app.ini\" ]; then\r\n    echo \"config file exists\"\r\nelse\r\n    echo \"[server]\r\n    LOCAL_ROOT_URL = http://${SERVER_IP}:${SERVER_PORT}/\r\n    DOMAIN           = ${SERVER_IP}\r\n    HTTP_PORT        = ${SERVER_PORT}\r\n    ROOT_URL         = http://${SERVER_IP}:${SERVER_PORT}/\r\n    DISABLE_SSH      = ${DISABLE_SSH}\r\n    SSH_PORT         = ${SSH_PORT}\" \u003e /mnt/server/custom/app.ini\r\nfi\r\n\r\necho -e \"-------------------------------------------------\"\r\necho -e \"Installation completed\"\r\necho -e \"-------------------------------------------------\""
+            "script": "## Gitea Installscript\r\n\r\n## Variables\r\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] && echo \"amd64\" || echo \"arm64\")\r\nLATEST=$(curl -sSL https:\/\/dl.gitea.io\/gitea\/version.json | jq -r .latest.version)\r\n\r\n\r\ncd \/mnt\/server\r\n\r\n## install gitea\r\necho -e \"Download url: https:\/\/dl.gitea.io\/gitea\/${LATEST}\/gitea-${LATEST}-linux-${ARCH}\"\r\nif [ -z \"${VERSION}\" ] || [ \"${VERSION}\" == \"latest\" ]; then\r\n    echo -e \"downloading Gitea $LATEST\"\r\n    curl -sSL -o gitea https:\/\/dl.gitea.io\/gitea\/${LATEST}\/gitea-${LATEST}-linux-${ARCH}\r\nelif [ \"${VERSION}\" == \"nightly\" ]; then\r\n    echo -e \"downloading Gitea nightly\"\r\n    curl -sSL -o gitea https:\/\/dl.gitea.io\/gitea\/main\/gitea-main-linux-${ARCH}\r\nelse\r\n    curl -sSL -o gitea https:\/\/dl.gitea.io\/gitea\/${VERSION}\/gitea-${VERSION}-linux-${ARCH}\r\n    echo -e \"downloading Gitea $VERSION\"\r\nfi\r\n\r\nchmod +x gitea\r\n\r\nmkdir -p custom\r\n\r\nif [ -f \"\/mnt\/server\/custom\/app.ini\" ]; then\r\n    echo \"config file exists\"\r\nelse\r\n    echo \"[server]\r\n    LOCAL_ROOT_URL = http:\/\/${SERVER_IP}:${SERVER_PORT}\/\r\n    DOMAIN           = ${SERVER_IP}\r\n    HTTP_PORT        = ${SERVER_PORT}\r\n    ROOT_URL         = http:\/\/${SERVER_IP}:${SERVER_PORT}\/\r\n    DISABLE_SSH      = ${DISABLE_SSH}\r\n    SSH_PORT         = ${SSH_PORT}\" > \/mnt\/server\/custom\/app.ini\r\nfi\r\n\r\necho -e \"-------------------------------------------------\"\r\necho -e \"Installation completed\"\r\necho -e \"-------------------------------------------------\"",
+            "container": "ghcr.io\/pelican-eggs\/installers:debian",
+            "entrypoint": "bash"
         }
     },
     "variables": [

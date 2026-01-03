@@ -1,0 +1,115 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/lavalink/egg-lavalink.yaml'
+exported_at: '2026-01-03T18:24:28+00:00'
+name: Lavalink
+author: damuffin36@gmail.com
+uuid: 1c859893-2259-4972-82ca-e909737cea78
+description: |-
+  A standalone audio sending node based on Lavaplayer and Koe. Allows for sending audio without it
+  ever reaching any of your shards.
+  Description taken from https://github.com/lavalink-devs/Lavalink
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Java_21: 'ghcr.io/pelican-eggs/yolks:java_21'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -jar Lavalink.jar'
+config:
+  files:
+    application.yml:
+      parser: yml
+      find:
+        server.address: 0.0.0.0
+        server.port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Started Launcher in '
+  logs: {  }
+  stop: ^^C
+scripts:
+  installation:
+    script: |-
+      ## this is a simple script to use the github API for release versions.
+      ## this requires the egg has a variable for GITHUB_PACKAGE, VERSION and MATCH (match is to match the filename in some way)
+      ## this supports using oauth/personal access tokens via GITHUB_USER and GITHUB_OAUTH_TOKEN (both are required.)
+      ## if you are getting hit with GitHub API limit issues then you need to have the user and token set.
+
+      cd /mnt/server
+
+      if [ -z "${GITHUB_USER}" ] && [ -z "${GITHUB_OAUTH_TOKEN}" ] ; then
+          echo -e "using anon api call"
+      else
+          echo -e "user and oauth token set"
+          alias curl='curl -u ${GITHUB_USER}:${GITHUB_OAUTH_TOKEN} '
+      fi
+
+      ## get release info and download links
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases/latest")
+      RELEASES=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases")
+
+      if [ -z "${VERSION}" ] || [ "${VERSION}" == "latest" ]; then
+          DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})
+      else
+          VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+          if [ "${VERSION}" == "${VERSION_CHECK}" ]; then
+              DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})
+          else
+              echo -e "defaulting to latest release"
+              DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)
+          fi
+      fi
+      if [ ! -z "${DOWNLOAD_URL}" ]; then 
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_URL}; then
+              echo -e "link is valid. setting download link to ${DOWNLOAD_URL}"
+              DOWNLOAD_LINK=${DOWNLOAD_URL}
+          else        
+              echo -e "link is invalid closing out"
+              exit 2
+          fi
+      fi
+
+      curl -L -o Lavalink.jar ${DOWNLOAD_URL}
+      curl -L -o application.yml https://raw.githubusercontent.com/freyacodes/Lavalink/master/LavalinkServer/application.yml.example
+
+      echo "-------------------------------------------------------"
+      echo "Installation completed"
+      echo "-------------------------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 2
+    name: GITHUB_PACKAGE
+    description: ''
+    env_variable: GITHUB_PACKAGE
+    default_value: lavalink-devs/Lavalink
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+  -
+    sort: 3
+    name: Match
+    description: ''
+    env_variable: MATCH
+    default_value: Lavalink.jar
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+  -
+    sort: 1
+    name: Version
+    description: ''
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
