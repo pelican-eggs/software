@@ -1,0 +1,164 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/foldingathome/egg-folding-home.yaml'
+exported_at: '2026-01-03T18:23:56+00:00'
+name: Folding@Home
+author: fuggschen@krk-gaming.de
+uuid: 6ac374df-1959-4d5e-a9c9-971c8c3f0b8f
+description: |-
+  Folding@home is a distributed computing project aimed to help scientists develop new therapeutics
+  for a variety of diseases by the means of simulating protein dynamics. This includes the process of
+  protein folding and the movements of proteins, and is reliant on simulations run on volunteers'
+  personal computers
+image: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjEyNS4yMjUxOW1tIiBoZWlnaHQ9IjEzNS40MDUzMm1tIiB2aWV3Qm94PSIwIDAgMTI1LjIyNTE5IDEzNS40MDUzMiI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgeGxpbms6aHJlZj0iI2EiIGlkPSJtIiBjeD0iMTE2LjI2MjI1IiBjeT0iMjA3LjMzMTA3IiByPSIxNy45NjQyODMiIGZ4PSIxMTYuMjYyMjUiIGZ5PSIyMDcuMzMxMDciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoLjE2MDUyIDAgMCAuMTYxNzIgLTEzMy42MDEwNCAtMTk2Ljk3MzE5KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiLz4KICAgIDxyYWRpYWxHcmFkaWVudCB4bGluazpocmVmPSIjYSIgaWQ9Im4iIGN4PSIxMTYuMjYyMjUiIGN5PSIyMDcuMzMxMDciIHI9IjE3Ljk2NDI4MyIgZng9IjExNi4yNjIyNSIgZnk9IjIwNy4zMzEwNyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCguMzU0ODIgMCAwIC4zNTc0NSA1Mi44NDU0NjMgODUuNzQ4MDYpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIvPgogICAgPHJhZGlhbEdyYWRpZW50IHhsaW5rOmhyZWY9IiNhIiBpZD0iayIgY3g9IjExNi4yNjIyNSIgY3k9IjIwNy4zMzEwNyIgcj0iMTcuOTY0MjgzIiBmeD0iMTE2LjI2MjI1IiBmeT0iMjA3LjMzMTA3IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KC4xNDgxNiAwIDAgLjE0OTI2IC0xMzguNDYwMDMgLTIwNS4yNzE1OSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIi8+CiAgICA8cmFkaWFsR3JhZGllbnQgeGxpbms6aHJlZj0iI2EiIGlkPSJoIiBjeD0iMTE2LjI2MjI1IiBjeT0iMjA3LjMzMTA3IiByPSIxNy45NjQyODMiIGZ4PSIxMTYuMjYyMjUiIGZ5PSIyMDcuMzMxMDciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoLjI0MjMgMCAwIC4yNDQxIDM2LjY3NjcxNiA5Ni4wMzk4NzkpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIvPgogICAgPHJhZGlhbEdyYWRpZW50IHhsaW5rOmhyZWY9IiNhIiBpZD0ibyIgY3g9IjExNi4yNjIyNSIgY3k9IjIwNy4zMzEwNyIgcj0iMTcuOTY0MjgzIiBmeD0iMTE2LjI2MjI1IiBmeT0iMjA3LjMzMTA3IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KC4xNzMxIDAgMCAuMTc0MzkgMzMuNzU4MDI1IDE2My40MjEyOSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIi8+CiAgICA8cmFkaWFsR3JhZGllbnQgeGxpbms6aHJlZj0iI2EiIGlkPSJlIiBjeD0iMTE2LjI2MjI1IiBjeT0iMjA3LjMzMTA3IiByPSIxNy45NjQyODMiIGZ4PSIxMTYuMjYyMjUiIGZ5PSIyMDcuMzMxMDciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoLjE2MDI4IDAgMCAuMTYxNDcgMzAuMjQwNzA0IDE3NS42NjI2MykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIi8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgeGxpbms6aHJlZj0iI2EiIGlkPSJsIiB4MT0iNDguNTAxMTA2IiB4Mj0iNDguMjMzODM3IiB5MT0iMTk2LjY0NzY2IiB5Mj0iMjE3LjIyMDAzIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuMjIzMSAwIDAgMS43MjEyMyAtMTc0LjY0MDIzIC01MjIuODE2MTIpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIvPgogICAgPGxpbmVhckdyYWRpZW50IHhsaW5rOmhyZWY9IiNhIiBpZD0iaiIgeDE9IjQ4LjUwMTEwNiIgeDI9IjQ4LjIzMzgzNyIgeTE9IjE5Ni42NDc2NiIgeTI9IjIxNy4yMjAwMyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCguODYyNjcgMCAwIDEuMjE0MDEgLTE2Mi45MDQ4NSAtNDI3Ljc3MTM2KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiLz4KICAgIDxsaW5lYXJHcmFkaWVudCB4bGluazpocmVmPSIjYSIgaWQ9ImciIHgxPSI0OC41MDExMDYiIHgyPSI0OC4yMzM4MzciIHkxPSIxOTYuNjQ3NjYiIHkyPSIyMTcuMjIwMDMiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS40MTA4MyAwIDAgMS45ODU0MiAtMy4zMDA3MDgyIC0yNjcuODM5NDkpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIvPgogICAgPGxpbmVhckdyYWRpZW50IHhsaW5rOmhyZWY9IiNhIiBpZD0iYyIgeDE9IjQ4LjUwMTEwNiIgeDI9IjQ4LjIzMzgzNyIgeTE9IjE5Ni42NDc2NiIgeTI9IjIxNy4yMjAwMyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxLjA5Njg1IDAgMCAxLjU0MzU2IDMuNzM3OTY1NCAtMTIzLjEzODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIvPgogICAgPGxpbmVhckdyYWRpZW50IHhsaW5rOmhyZWY9IiNhIiBpZD0iZCIgeDE9IjQ4LjUwMTEwNiIgeDI9IjQ4LjIzMzgzNyIgeTE9IjE5Ni42NDc2NiIgeTI9IjIxNy4yMjAwMyIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCguOTMzMjUgMCAwIDEuMzEzMzMgMy43OTU5OTU1IC02NS4wNDAyODkpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIvPgogICAgPGZpbHRlciBpZD0iaSIgd2lkdGg9IjEuMTE5OTIyIiBoZWlnaHQ9IjEuMTI0OTgyNiIgeD0iLS4wNTk5NjEiIHk9Ii0uMDYyNDkxMjkiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjYuMjQzMzgyMSIvPgogICAgPC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJmIiB3aWR0aD0iMS4wODM2MjE3IiBoZWlnaHQ9IjEuMDc5NjczNiIgeD0iLS4wNDE4MTA4NSIgeT0iLS4wMzk4MzY4NyIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iNi41NDY3NTk4Ii8+CiAgICA8L2ZpbHRlcj4KICAgIDxmaWx0ZXIgaWQ9ImIiIHdpZHRoPSIxLjEzNzA4MTYiIGhlaWdodD0iMS4xMzY1MTk2IiB4PSItLjA2ODU0MDgiIHk9Ii0uMDY4MjU5NzciIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjEuOTEwNTM5NSIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMi40NDYzNzcgLTExMy4xNzE2OSkiPgogICAgPHBhdGggZmlsbC1vcGFjaXR5PSIuNzM3MzczNjgiIGQ9Ik01OS4yNjkxMDEgMTc0LjgxNzUzYTE4LjQ4NzIzIDE4LjYyNDc1NiAwIDAgMC0xOC40ODcyNDEgMTguNjI1MjIgMTguNDg3MjMgMTguNjI0NzU2IDAgMCAwIC4zOTA2NzMgMy43MTI5NSAyNC4yMzk2NDcgMjQuNDE5OTYzIDAgMCAwLTcuMDgxNzQgMTIuNTI2MzcgMTkuMTQwOTEzIDE5LjI4MzMwMiAwIDAgMC01LjA1OTEyMSAxMy4wMjY1OSAxOS4xNDA5MTMgMTkuMjgzMzAyIDAgMCAwIDE5LjE0MDk1IDE5LjI4MzA2IDE5LjE0MDkxMyAxOS4yODMzMDIgMCAwIDAgOS41NzU2NDQtMi42MTQzMSAyNC4yMzk2NDcgMjQuNDE5OTYzIDAgMCAwIDkuMzM5NDc5LTEuOTE0MDkgMTguNDg3MjMgMTguNjI0NzU2IDAgMCAwIDEwLjM1NTQ0MiAzLjIwMTg3IDE4LjQ4NzIzIDE4LjYyNDc1NiAwIDAgMCAxOC40ODcyNDItMTguNjI0NyAxOC40ODcyMyAxOC42MjQ3NTYgMCAwIDAtMTYuODA0NjU4LTE4LjUzOTk2IDI0LjIzOTY0NyAyNC40MTk5NjMgMCAwIDAtMi40Njc1NS0zLjgwMTgzIDE4LjQ4NzIzIDE4LjYyNDc1NiAwIDAgMCAxLjA5ODEyNC02LjI1NTk1IDE4LjQ4NzIzIDE4LjYyNDc1NiAwIDAgMC0xOC40ODcyNDQtMTguNjI1MjJ6IiBmaWx0ZXI9InVybCgjYikiLz4KICAgIDxlbGxpcHNlIGN4PSI1Ny45NDYwNjgiIGN5PSIxOTIuMzA4NjEiIGZpbGw9IiNmZjAyZWYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9Ii41NDQ1NzA5OCIgcng9IjE4LjQ4NzIzIiByeT0iMTguNjI0NzU2Ii8+CiAgICA8ZWxsaXBzZSBjeD0iNzguNTc3MjQiIGN5PSIyMjEuMDk1NDYiIGZpbGw9IiNmZjAyZWYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9Ii41MjkxNjY3IiByeD0iMTguNDg3MjMiIHJ5PSIxOC42MjQ3NTYiLz4KICAgIDxlbGxpcHNlIGN4PSI1OC44NzM2MDgiIGN5PSIyMTQuMDEyODIiIGZpbGw9IiNmZjA4MDIiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9Ii41MjkxNjY3IiByeD0iMjQuMjM5NjQ3IiByeT0iMjQuNDE5OTY0Ii8+CiAgICA8ZWxsaXBzZSBjeD0iNTYuNzk4NzEiIGN5PSIyMDEuMDEzODkiIGZpbGw9InVybCgjYykiIHJ4PSIxNS44MzAyNzYiIHJ5PSI4Ljg2OTcyNzEiLz4KICAgIDxlbGxpcHNlIGN4PSI0OS4zMDYzNjYiIGN5PSIyMjEuNzYzNjEiIGZpbGw9IiNmZjAyZWYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9Ii41MjkxNjY3IiByeD0iMTkuMTQwOTEzIiByeT0iMTkuMjgzMzAyIi8+CiAgICA8ZWxsaXBzZSBjeD0iNDguOTQyNzQ5IiBjeT0iMjEwLjc2NTA2IiBmaWxsPSJ1cmwoI2QpIiByeD0iMTMuNDY5MTk1IiByeT0iNy41NDY4MTE2Ii8+CiAgICA8ZWxsaXBzZSBjeD0iNDguODc1MDcyIiBjeT0iMjA5LjE0MDYxIiBmaWxsPSJ1cmwoI2UpIiByeD0iMi44NzkyOTMyIiByeT0iMi45MDA3MTE4Ii8+CiAgICA8cGF0aCBmaWxsLW9wYWNpdHk9Ii41MTAxMDEwMiIgZD0iTTQxMy40MjM4MyA0NjQuNDkwMjNhOTMuMzI3ODcgOTQuMDIyMTI4IDAgMCAwLTc5LjUwMzkxIDQ1LjAwMTk2IDE0OS40MjY3OCAxNTAuNTM4MzcgMCAwIDAtNDYuODQ3NjUgMTQuODQ5NjEgMTE0LjUxMDcxIDExNS4zNjI1NCAwIDAgMC00MS42MDU0Ny03Ljk0OTIyIDExNC41MTA3MSAxMTUuMzYyNTQgMCAwIDAtMTE0LjUwOTc3IDExNS4zNjMyOEExMTQuNTEwNzEgMTE1LjM2MjU0IDAgMCAwIDIzNC4xNjAxNiA3NDYuNDM3NWExNDkuNDI2NzggMTUwLjUzODM3IDAgMCAwIDQ1LjA5NzY1IDQxLjQyNTc4IDExNC41MTA3MSAxMTUuMzYyNTQgMCAwIDAgMTA1LjYwOTM4IDcxLjA0MTAyIDExNC41MTA3MSAxMTUuMzYyNTQgMCAwIDAgMTE0LjUxMTcyLTExNS4zNjEzMyAxMTQuNTEwNzEgMTE1LjM2MjU0IDAgMCAwLTQuNjA3NDMtMzIuMTczODMgMTQ5LjQyNjc4IDE1MC41MzgzNyAwIDAgMCA5Ljc2MzY4LTUzLjAxMzY3IDE0OS40MjY3OCAxNTAuNTM4MzcgMCAwIDAtOS44NjkxNC01My42ODM1OUE5My4zMjc4NyA5NC4wMjIxMjggMCAwIDAgNTA2Ljc1IDU1OC41MTE3MmE5My4zMjc4NyA5NC4wMjIxMjggMCAwIDAtOTMuMzI2MTctOTQuMDIxNDl6IiBmaWx0ZXI9InVybCgjZikiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0uNTcxNjM5NSAzLjIxODc2ODIpIHNjYWxlKC4yNjQ1OCkiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDkuMzg0OCIgY3k9IjE0Ny43NzI5MiIgZmlsbD0iI2ZkMDgwMiIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iLjUyOTE2NjciIHJ4PSIyNC42OTI5OTkiIHJ5PSIyNC44NzY2ODgiLz4KICAgIDxlbGxpcHNlIGN4PSIxMDEuODI5NjgiIGN5PSIxOTYuNzI4ODciIGZpbGw9IiNmZjA4MDIiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9Ii41MjkxNjY3IiByeD0iMzAuMjk3NjI1IiByeT0iMzAuNTIzMDA1Ii8+CiAgICA8ZWxsaXBzZSBjeD0iOTMuOTU1OTMzIiBjeT0iMTc0LjE4OTY0IiBmaWxsPSIjZmRlYTA1IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIuNTI5MTY2NyIgcng9IjM5LjUzNTgzNSIgcnk9IjM5LjgyOTk0NSIvPgogICAgPHBhdGggZmlsbD0iI2ZmMDgwMiIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iLjUyOTE2NjciIGQ9Ik02NC45NDY0MjMgMTM2LjYyODg3YTMwLjI5NzYyNSAzMC41MjMwMDUgMCAwIDAtMzAuMjk3Mzc2IDMwLjUyMzIgMzAuMjk3NjI1IDMwLjUyMzAwNSAwIDAgMCAzMC4yOTczNzYgMzAuNTIzMiAzMC4yOTc2MjUgMzAuNTIzMDA1IDAgMCAwIDYuMzI1NzEyLS43MTA1NSA3MS44OTc3ODcgNzIuNDMyNjIzIDAgMCAwIDIwLjIzMjM1Ni00NC40MzY1NiAzMC4yOTc2MjUgMzAuNTIzMDA1IDAgMCAwLTI2LjU1ODA2OC0xNS44OTkyOXoiLz4KICAgIDxlbGxpcHNlIGN4PSI2NC45NDkyNzIiIGN5PSIxNDkuMTA1NDUiIGZpbGw9InVybCgjZykiIHJ4PSIyMC4zNjE4NzQiIHJ5PSIxMS40MDg3ODgiLz4KICAgIDxlbGxpcHNlIGN4PSI2NC44NDY5NyIgY3k9IjE0Ni42NDk3IiBmaWxsPSJ1cmwoI2gpIiByeD0iNC4zNTI3MzIyIiByeT0iNC4zODUxMTE4Ii8+CiAgICA8cGF0aCBmaWxsLW9wYWNpdHk9Ii41NDA0MDQwMiIgZD0iTTQ3MC43MzA0NyA0NDMuMDA1ODZhNjkuODczMDExIDcwLjM5Mjc4NSAwIDAgMC01NC40NDkyMiAyNi4zNzY5NSA5MS42MTQ0MjEgOTIuMjk1OTI2IDAgMCAwLTIzLjEyMzA1IDkuMzQ5NjEgNzkuNzk3MDY3IDc5LjIwNzg1IDY5LjQ3MTQyOSAwIDAtNTEuMTU2MjUgMS4yOTI5NyA3OS43OTcwNjcgNzkuMjA3ODUgNjkuNDcxNDI5IDAgMC00Ni4xOTMzNiAxMDIuNTA1ODYgNzkuNzk3MDY3IDc5LjIwNzg1IDY5LjQ3MTQyOSAwIDAgODguNDkwMjQgNTAuNjc3NzMgOTEuNjE0NDIxIDkyLjI5NTkyNiAwIDAgMCAxMC4wMDE5NSA2LjUyOTMgNjkuODczMDExIDcwLjM5Mjc4NSAwIDAgMCA2NC4zMDg2IDQzLjA0Njg4IDY5Ljg3MzAxMSA3MC4zOTI3ODUgMCAwIDAgNjkuODczMDQtNzAuMzkyNTggNjkuODczMDExIDcwLjM5Mjc4NSAwIDAgMC0zLjgzMjAzLTIyLjczMDQ3IDkxLjYxNDQyMSA5Mi4yOTU5MjYgMCAwIDAgNS4zNzEwOS0zMC44MDY2NCA5MS42MTQ0MjEgOTIuMjk1OTI2IDAgMCAwLS4zNzg5LTcuNzUzOTEgNjkuODczMDExIDcwLjM5Mjc4NSAwIDAgMCAxMC45NjA5NC0zNy43MDMxMiA2OS44NzMwMTEgNzAuMzkyNzg1IDAgMCAwLTY5Ljg3MzA1LTcwLjM5MjU4eiIgZmlsdGVyPSJ1cmwoI2kpIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS4zMjc2NjUyIDEuOTI0MjczMSkgc2NhbGUoLjI2NDU4KSIvPgogICAgPGVsbGlwc2UgY3g9IjEyMS4zNDAzNyIgY3k9IjE2Mi4wMjg5IiBmaWxsPSIjMDRmMGZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIuNTI5MTY2NyIgcng9IjE4LjQ4NzIzNCIgcnk9IjE4LjYyNDc1OCIvPgogICAgPGVsbGlwc2UgY3g9Ii0xMjEuMTcyMzMiIGN5PSItMTcyLjgyMzgxIiBmaWxsPSJ1cmwoI2opIiByeD0iMTIuNDUwNTg4IiByeT0iNi45NzYwODI4IiB0cmFuc2Zvcm09InNjYWxlKC0xKSIvPgogICAgPGVsbGlwc2UgY3g9IjEyNC41NDc2IiBjeT0iMTM1LjgzNjQ5IiBmaWxsPSIjMDRmMGZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIuNTI5MTY2NyIgcng9IjE4LjQ4NzIzNCIgcnk9IjE4LjYyNDc1OCIvPgogICAgPGVsbGlwc2UgY3g9IjExNS45OTQ5OCIgY3k9IjE0Ny44NjM2IiBmaWxsPSIjMDkxNWU4IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIuNTI5MTY2NyIgcng9IjI0LjIzOTY0OSIgcnk9IjI0LjQxOTk2NCIvPgogICAgPGVsbGlwc2UgY3g9Ii0xMjEuMjM0ODkiIGN5PSItMTc0LjMyNTQyIiBmaWxsPSJ1cmwoI2spIiByeD0iMi42NjE1NDY1IiByeT0iMi42ODEzNDU1IiB0cmFuc2Zvcm09InNjYWxlKC0xKSIvPgogICAgPGVsbGlwc2UgY3g9Ii0xMTUuNDcxNzMiIGN5PSItMTYxLjM1MDcyIiBmaWxsPSJ1cmwoI2wpIiByeD0iMTcuNjUyNDgxIiByeT0iOS44OTA3MTA4IiB0cmFuc2Zvcm09InNjYWxlKC0xKSIvPgogICAgPHBhdGggZmlsbD0iIzA0ZjBmZiIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iLjUyOTE2NjciIGQ9Ik05MC40ODgxODMgMTI3LjAwNjgzYTIxLjExMjk3NCAyMC45NTcwNzcgNjkuNDcxNDI5IDAgMC0xMi4yMjIyNjMgMjcuMTIxNDIgMjEuMTEyOTc0IDIwLjk1NzA3NyA2OS40NzE0MjkgMCAwIDI3LjAyOTkyIDEyLjQyMzMyIDIxLjExMjk3NCAyMC45NTcwNzcgNjkuNDcxNDI5IDAgMCAzLjkyNTMyLTEuOTk0NjcgNTAuMTAyMTQ4IDQ5LjczMjE5OCA2OS40NzE0MjkgMCAwIDIuMzI3NDYtMzMuNjkyODUgMjEuMTEyOTc0IDIwLjk1NzA3NyA2OS40NzE0MjkgMCAwLTIxLjA2MDQzNy0zLjg1NzIyeiIvPgogICAgPGVsbGlwc2UgY3g9Ii0xMTQuOTM4NDIiIGN5PSItMTYzLjQ0NDQ0IiBmaWxsPSJ1cmwoI20pIiByeD0iMi44ODM2NjA2IiByeT0iMi45MDUxMTE4IiB0cmFuc2Zvcm09InNjYWxlKC0xKSIvPgogICAgPGVsbGlwc2UgY3g9Ijk0LjA5NzA3NiIgY3k9IjE1OS44NTk1IiBmaWxsPSJ1cmwoI24pIiBvcGFjaXR5PSIuOTcwMDAwMDIiIHJ4PSI2LjM3NDAwMiIgcnk9IjYuNDIxNDE3NyIvPgogICAgPGVsbGlwc2UgY3g9IjUzLjg4Mjk1NCIgY3k9IjE5OS41NzcxNSIgZmlsbD0idXJsKCNvKSIgcng9IjMuMTA5NjA2NSIgcnk9IjMuMTMyNzM4NiIvPgogIDwvZz4KPC9zdmc+'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: './FAHClient --user={{FAH_USERNAME}} --team={{FAH_TEAM}} --passkey={{FAH_PASSKEY}} $(if {{FAH_ANON}}; then echo "--fold-anon=true"; fi) --command-port={{SERVER_PORT}} --password={{FAH_PASSWORD}} --power={{FAH_POWER}}'
+config:
+  files: {  }
+  startup:
+    done: 'Started FahCore'
+  logs: {  }
+  stop: ^^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      #
+      # Folding@Home install script
+      #
+      # Created by Fuggschen
+
+      export DEBIAN_FRONTEND=noninteractive
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "64bit" || echo "arm64")
+      cd /tmp
+
+      echo "Removing previous Version"
+      mv /mnt/server/config.xml /tmp/config.xml
+      rm -rf /mnt/server/*
+
+      echo "Installing dependencies"
+      apt update && apt upgrade -y && apt install curl bzip2 -y
+
+      echo "Downloading FAHClient"
+      curl -sSL -o fahclient.tar.bz2 https://download.foldingathome.org/releases/v7/public/fahclient/debian-stable-${ARCH}/release/fahclient_${FAH_VERSION}-64bit-release.tar.bz2
+
+      echo "Installing FAHClient"
+      tar -xjf fahclient.tar.bz2 -C /mnt/server --strip-components=1
+
+      echo "Cleaning up.."
+      rm -f fahclient.tar.bz2
+      rm -f /mnt/server/sample-config.xml
+      mv /tmp/config.xml /mnt/server/config.xml
+
+      FILE=/mnt/server/config.xml
+      if [[ ! -f  $FILE ]]
+      then
+      echo "Setting up config.xml"
+      cat > $FILE << EOF
+      <config>
+        <!-- Folding Slots -->
+        <slot id='0' type='CPU'/>
+        <!-- Maximum CPU Cores to use. Can't be more than 64 -->
+        <cpus v='64'/>
+      </config>
+      EOF
+      fi
+
+      echo "Done!"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 4
+    name: 'FaH Anonymous Mode'
+    description: 'Set to true if you are folding Anonymously'
+    env_variable: FAH_ANON
+    default_value: true
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:true,false'
+  -
+    sort: 3
+    name: 'FaH Passkey'
+    description: |-
+      Your Folding@Home Passkey for your Username, if not Anonymous. Get your Passkey here:
+      https://apps.foldingathome.org/getpasskey
+    env_variable: FAH_PASSKEY
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:32'
+  -
+    sort: 6
+    name: 'FaHControl Password'
+    description: 'Set a WebUI Password'
+    env_variable: FAH_PASSWORD
+    default_value: SetPasswordHere
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:64'
+  -
+    sort: 7
+    name: 'FaH Power'
+    description: "The Powerlevel it should use:\r\n- light (only half the cpu power is used)\r\n- medium (full cpu power)\r\n- full (full cpu and gpu power but gpu is not supported)"
+    env_variable: FAH_POWER
+    default_value: medium
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:light,medium,full'
+  -
+    sort: 2
+    name: 'FaH Team'
+    description: |-
+      Your Folding@Home Team that you are folding for. For reference look here:
+      https://stats.foldingathome.org/team
+    env_variable: FAH_TEAM
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - int
+  -
+    sort: 1
+    name: 'FaH Username'
+    description: 'Your Folding@Home Username'
+    env_variable: FAH_USERNAME
+    default_value: Anonymous
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+  -
+    sort: 5
+    name: 'FaH Version'
+    description: |-
+      Set to wanted major Folding@Home Version. Check here:
+      https://download.foldingathome.org/releases/v7/public/fahclient/debian-stable-64bit/release/
+    env_variable: FAH_VERSION
+    default_value: 7.6.21
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

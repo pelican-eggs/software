@@ -1,0 +1,158 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/5e-tools/egg-5e-tools.yaml'
+exported_at: '2026-01-03T18:22:37+00:00'
+name: '5e Tools'
+author: pterodactyl@demi.cloud
+uuid: ae9f372e-01d7-4c9b-a109-e49990d68d45
+description: 'A suite of tools for 5th Edition Dungeons & Dragons players and Dungeon Masters.'
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: 'cd ~/5e-tools && git pull && cd && ./caddy run --config ~/caddy.json'
+config:
+  files:
+    caddy.json:
+      parser: json
+      find:
+        apps.http.servers.srv0.listen.0: ':{{server.allocations.default.port}}'
+  startup:
+    done: 'serving initial configuration'
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # 5e Tools install script
+      #
+      # Server Files: /mnt/server
+      declare -r DIR="/mnt/server"
+      declare -r CADDY_INSTALL_URL="https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=41554620449867"
+      declare -r LOCAL_REPO="${DIR}/5e-tools"
+
+      die() {
+        local message="$1"
+        printf "
+      %s
+      " "${message}"
+        exit 2
+      }
+      cd_error() {
+        die "ERROR: installation encountered an error while trying to change directory"
+      }
+
+      main() {
+        local git_origin
+        apt update
+        apt install -y wget
+        cd "${DIR}" || cd_error
+        printf "
+      Installing Caddy...
+      "
+        wget "${CADDY_INSTALL_URL}" -O ./caddy
+        chmod +x ./caddy
+        printf "
+      Generating Caddy configuration...
+      "
+        # this is a default config
+        # key variables, such as the port, will get overwritten with the pterodactyl
+        # configuration parser
+        cat <<EOF >"${DIR}/caddy.json"
+      {
+        "apps": {
+          "http": {
+            "servers": {
+              "srv0": {
+                "listen": [
+                  ":8080"
+                ],
+                "routes": [
+                  {
+                    "handle": [
+                      {
+                        "handler": "vars",
+                        "root": "/home/container/5e-tools"
+                      },
+                      {
+                        "encodings": {
+                          "gzip": {},
+                          "zstd": {}
+                        },
+                        "handler": "encode",
+                        "prefer": [
+                          "zstd",
+                          "gzip"
+                        ]
+                      },
+                      {
+                        "handler": "file_server"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+      EOF
+        git config --global pull.ff only
+        if [[ ! -d "${LOCAL_REPO}" ]]; then
+          printf "
+      Cloning latest version (this may take a while)...
+      "
+          # $REPOSITORY is passed via environment variable from pterodactyl
+          git clone "${REPOSITORY}" "${LOCAL_REPO}"
+        else
+          cd "${LOCAL_REPO}" || cd_error
+          git_origin="$(git config --get remote.origin.url)"
+          cd "${DIR}" || cd_error
+          printf "
+
+      git origin is %s
+
+      " "${git_origin}"
+          # if the user hasn't change the repository variable
+          if [[ "${git_origin}" == "${REPOSITORY}" ]]; then
+            cd "${LOCAL_REPO}" || cd_error
+            printf "
+      Repository already installed - updating...
+      "
+            git fetch --all
+            git reset --hard origin/master
+            git pull
+            cd "${DIR}" || cd_error
+          else
+            printf "
+      Repository variable changed since last update
+      ...
+      "
+            rm -rf "${LOCAL_REPO}"
+            git clone "${REPOSITORY}" "${LOCAL_REPO}"
+          fi
+        fi
+        printf "
+      Installation Complete
+      "
+      }
+      main "@"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: '5e Tools Repository'
+    description: 'Git Repository to use for cloning 5e Tools'
+    env_variable: REPOSITORY
+    default_value: 'https://github.com/5etools-mirror-1/5etools-mirror-1.github.io'
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - url

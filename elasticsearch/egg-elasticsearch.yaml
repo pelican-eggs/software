@@ -1,0 +1,74 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/elasticsearch/egg-elasticsearch.yaml'
+exported_at: '2026-01-03T18:23:48+00:00'
+name: Elasticsearch
+author: dominic@stilma.net
+uuid: 9dfd90cd-07e8-4b60-b448-c4d22526633a
+description: |-
+  Elasticsearch is a distributed, RESTful search and analytics engine capable of addressing a growing
+  number of use cases. As the heart of the Elastic Stack, it centrally stores your data for lightning
+  fast search, fine‑tuned relevancy, and powerful analytics that scale with ease.
+image: 'data:image/webp;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: './bin/elasticsearch -E network.host=0.0.0.0 -E http.port={{SERVER_PORT}} -E discovery.type={{DISCOVERY_SEED_HOSTS}}'
+config:
+  files: {  }
+  startup:
+    done: started
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # Elasticsearch Installation Script
+      #
+      # Server Files: /mnt/server
+
+      ## Install Requirements
+
+      cd /mnt/server
+
+      ## Install Elasticsearch
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "x86_64" || echo "aarch64")
+      curl -sSL -o elasticsearch.tar.gz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$VERSION-linux-${ARCH}.tar.gz
+
+      tar -zxf  elasticsearch.tar.gz --directory /mnt/server
+      mv elasticsearch*/* /mnt/server
+      rm  elasticsearch.tar.gz
+      rm -R elasticsearch-*
+
+      ## Finish command
+      echo "All done! Just start it up :)"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Discovery Seed Hosts'
+    description: 'Please keep default if you are unsure.'
+    env_variable: DISCOVERY_SEED_HOSTS
+    default_value: single-node
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+  -
+    sort: 2
+    name: 'Elasticsearch Version'
+    description: 'Go to https://www.elastic.co/downloads/elasticsearch and look at the version at the top.'
+    env_variable: VERSION
+    default_value: 8.13.0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
