@@ -43,8 +43,8 @@
             "description": "Key to sign cookies. Must be at least 64 bytes long.",
             "env_variable": "COOKIES_KEY",
             "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
+            "user_viewable": false,
+            "user_editable": false,
             "rules": "required|string|min:64",
             "field_type": "text"
         },
@@ -53,8 +53,8 @@
             "description": "Salt used to hash user passwords used for encrypting pastes.",
             "env_variable": "SALT",
             "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
+            "user_viewable": false,
+            "user_editable": false,
             "rules": "required|string|min:8",
             "field_type": "text"
         },
