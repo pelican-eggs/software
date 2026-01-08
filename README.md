@@ -63,3 +63,7 @@
 ### 5e Tools
 
 * [5e Tools](/5e-tools)
+
+### Wastebin
+
+* [Wastebin](/wastebin)

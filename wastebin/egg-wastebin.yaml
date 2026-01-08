@@ -1,0 +1,107 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/wastebin/egg-wastebin.yaml'
+exported_at: '2026-01-03T21:37:10+00:00'
+name: Wastebin
+author: 79359578+hallo123wert@users.noreply.github.com
+uuid: c03613a3-4c8c-4bff-b138-e912b088d681
+description: |-
+  Wastebin is an open-source pastebin software written in Rust, which is easily installable in any
+  network.
+image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAABDdJREFUWIWtV99PW2UYft7vlNFWGL+ySDouZqIXA6Imhp8r5BzmhagQfxV1MYZkxjvjvTriZH+Af4AxZBN1Y4lxky0GtUcgFDqi0RGY4sXMuoExCAPa0nK+7/WCdoHSc9rSPclJc877nOd5+uWc730PMTPywfPX/ypdLV3rUrB6CLIBpB4FZB1DAVARCPkPQc4pxtXVOAUXu7sT+ehSrgD+sV99lsAASJ0CZDmgAEiAdn454zxV31BCDUstMfjLiTfuHShAeyjiUbG1MwT1PiC9vNcgVwCk+FFm+WkZ4ueCev9W3gH8Y3/4pFDfALI5Q7DQAAAUiOSMJPnybMdbS5leIvNCy/d/PiUJYQDNTktXCJjRIpjCrRPnn3QM0GzerhVCfAfg6MMy34U6xbje/tP5PdoPArSHIh7NUldAqCtANJ468oXPcqnLhjnk3heAYvIjAE05BCyALzBzT4Jk1bShe2eMLm+SSqqYqJeAL3Y4jmiNkvrggS8zwz92x6dILTKkN/MhS58r4ilN8Okp/ZlbTupt46PHlbI+Z1Kt2R5aQIEho0zyidmOd5cEdigDALwOuiM1icNducwBINT5woIXFQYBlx1ojwiIMwBA3dcWS9dKDv0LcDlnf81C1Umvca378bx2tjQMc8gdE2Ums2rJsgIAqfV4TeURse5ynwRTuY2OJBanCzUHgKDevyUV9cP+mThcurJiCAWtx06EGF+Gnm1cKNQ8jVn91VtgXHTQ7xUA19sqEC4d1DwNZh6xlRd0XBBQa0co1azJYgOUuMWEbZHZJxjw2ZRjQf3ptWIDTLUF/oP9ZnV0Xy/YBSrWPA8oQYBdv/Z0TN6sKtahPTRSDcBjU14SDN7XItOwksJfbACZ4E67GgF3BbGYt72bua/YAEwcsK/RgmANVxzuf7M5+FvDQc3bxi8eB8j+T0h8KyqT0SCAdRuKpin6zDBNt03dFoY55JasDQFw2VDux49U/yxS2+xXDlqtCVlxoZAQhmm6o1QxDIepihnDc/WBpAAAAXwCIGpLBl6Lq3Kz9ccZ+10zhSZztDGGtXEArzjQNoXaHgR2DaUnfvj7nIL80G4eSA2Zkkl9LSAvuUp4YsLvXwWAjsnRqu1tVycL2QdWrwNSsxtid7qhdfZG5zsf7wlgmLfdW5Yygf3t02EqjqemYk+efABqajW60bXY/V4itfo7COrHtqRLvATgTq5l3gUP7DeZbLjnskRf2nxPAAAI68eWmbQXwYgUIJovIgrquamut+/uvrivF0yffOx3WSKbAEw/RPMQ1HbTbGf/zcxC1mYU1uuX3ZrHYJDj25ELBGwS4+xqrNII6/3LWTm5Pk6bzflaTSUGGOoUICvy/DS7z8TD4O3BsB7Iapx3gDQaR+YPldVs6CDVC6gGgGsBq46hQJARRWqZYM2R4qubK3FzLhBI5qP7P+2jPNgXLvgbAAAAAElFTkSuQmCC'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: 'WASTEBIN_ADDRESS_PORT=0.0.0.0:{{SERVER_PORT}} WASTEBIN_BASE_URL={{BASE_URL}} WASTEBIN_PASSWORD_SALT={{SALT}} WASTEBIN_SIGNING_KEY={{COOKIES_KEY}} WASTEBIN_THEME={{THEME}} WASTEBIN_DATABASE_PATH=wastebin.sqlite RUST_LOG=debug ./wastebin'
+config:
+  files: {  }
+  startup:
+    done: 'serving on'
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |2-
+       #!/bin/bash
+
+      echo -e "installing dependencies"
+      apt update
+      apt -y --no-install-recommends install zstd
+
+      cd /mnt/server
+
+      ## get release info and download links
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/matze/wastebin/releases/latest")
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "x86_64" || echo "aarch64")
+
+      if [ "${ARCH}" == "aarch64" ]; then
+          MATCH=aarch64-unknown-linux-musl
+      else
+          MATCH=x86_64-unknown-linux-musl
+      fi
+
+      DOWNLOAD_URL=$(echo "${LATEST_JSON}" | jq -r ".assets[].browser_download_url" | grep -i "${MATCH}")
+
+      echo "Download url: ${DOWNLOAD_URL}"
+      curl -ssL -o wastebin.zst ${DOWNLOAD_URL}
+      tar -xf wastebin.zst wastebin
+      rm wastebin.zst
+
+      chmod +x wastebin
+
+      ## install end
+      echo "Installation completed"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: Url
+    description: 'Base URL for the QR code display.'
+    env_variable: BASE_URL
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - url
+  -
+    sort: 4
+    name: 'Cookies KEY'
+    description: 'Key to sign cookies. Must be at least 64 bytes long.'
+    env_variable: COOKIES_KEY
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'min:64'
+  -
+    sort: 3
+    name: 'Passwort SALT'
+    description: 'Salt used to hash user passwords used for encrypting pastes.'
+    env_variable: SALT
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'min:8'
+  -
+    sort: 2
+    name: THEME
+    description: 'Theme colors, one of ayu, base16ocean, catppuccin, coldark, gruvbox, monokai, onehalf, solarized. '
+    env_variable: THEME
+    default_value: ayu
+    user_viewable: true
+    user_editable: true
+    rules:
+      - string
+      - required
+      - 'in:ayu,base16ocean,catppuccin,coldark,gruvbox,monokai,onehalf,solarized'

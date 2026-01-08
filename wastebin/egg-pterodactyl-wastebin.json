@@ -1,0 +1,72 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-01-03T21:37:21+00:00",
+    "name": "Wastebin",
+    "author": "79359578+hallo123wert@users.noreply.github.com",
+    "description": "Wastebin is an open-source pastebin software written in Rust, which is easily installable in any\nnetwork.",
+    "features": null,
+    "docker_images": {
+        "Debian": "ghcr.io\/pelican-eggs\/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup": "WASTEBIN_ADDRESS_PORT=0.0.0.0:{{SERVER_PORT}} WASTEBIN_BASE_URL={{BASE_URL}} WASTEBIN_PASSWORD_SALT={{SALT}} WASTEBIN_SIGNING_KEY={{COOKIES_KEY}} WASTEBIN_THEME={{THEME}} WASTEBIN_DATABASE_PATH=wastebin.sqlite RUST_LOG=debug .\/wastebin",
+    "config": {
+        "files": "[]",
+        "startup": "{\n    \"done\": \"serving on\"\n}",
+        "logs": "[]",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": " #!\/bin\/bash\n\necho -e \"installing dependencies\"\napt update\napt -y --no-install-recommends install zstd\n\ncd \/mnt\/server\n\n## get release info and download links\nLATEST_JSON=$(curl --silent \"https:\/\/api.github.com\/repos\/matze\/wastebin\/releases\/latest\")\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] && echo \"x86_64\" || echo \"aarch64\")\n\nif [ \"${ARCH}\" == \"aarch64\" ]; then\n    MATCH=aarch64-unknown-linux-musl\nelse\n    MATCH=x86_64-unknown-linux-musl\nfi\n\nDOWNLOAD_URL=$(echo \"${LATEST_JSON}\" | jq -r \".assets[].browser_download_url\" | grep -i \"${MATCH}\")\n\necho \"Download url: ${DOWNLOAD_URL}\"\ncurl -ssL -o wastebin.zst ${DOWNLOAD_URL}\ntar -xf wastebin.zst wastebin\nrm wastebin.zst\n\nchmod +x wastebin\n\n## install end\necho \"Installation completed\"",
+            "container": "ghcr.io\/pelican-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Url",
+            "description": "Base URL for the QR code display.",
+            "env_variable": "BASE_URL",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|url",
+            "field_type": "text"
+        },
+        {
+            "name": "Cookies KEY",
+            "description": "Key to sign cookies. Must be at least 64 bytes long.",
+            "env_variable": "COOKIES_KEY",
+            "default_value": "",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|min:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Passwort SALT",
+            "description": "Salt used to hash user passwords used for encrypting pastes.",
+            "env_variable": "SALT",
+            "default_value": "",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string|min:8",
+            "field_type": "text"
+        },
+        {
+            "name": "THEME",
+            "description": "Theme colors, one of ayu, base16ocean, catppuccin, coldark, gruvbox, monokai, onehalf, solarized. ",
+            "env_variable": "THEME",
+            "default_value": "ayu",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string|required|in:ayu,base16ocean,catppuccin,coldark,gruvbox,monokai,onehalf,solarized",
+            "field_type": "text"
+        }
+    ]
+}
