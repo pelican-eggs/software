@@ -17,13 +17,13 @@
     },
     "file_denylist": [],
     "startup_commands": {
-        "Default": "if [ ! -f ./tailscaled ]; then echo \"Binary missing, please Reinstall Server\"; exit 1; fi; chmod +x ./tailscaled ./tailscale; ./tailscaled --state=tailscaled.state --tun=userspace-networking --socket=/tmp/tailscaled.sock & sleep 5; TS_ARGS=\"--authkey=${TS_AUTHKEY} --hostname=${SERVER_NAME}\"; if [ \"${ENABLE_EXIT_NODE}\" = \"1\" ] || [ \"${ENABLE_EXIT_NODE}\" = \"true\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-exit-node\"; fi; if [ ! -z \"${TS_ROUTES}\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-routes=${TS_ROUTES}\"; fi; echo \"Starting with args: ${TS_ARGS}\"; ./tailscale --socket=/tmp/tailscaled.sock up ${TS_ARGS} && echo \"Tailscale is running...\" && wait"
+        "Default": "if [ ! -f ./tailscaled ]; then echo \"Binary missing, please Reinstall Server\"; exit 1; fi; ./tailscaled --state=tailscaled.state --tun=userspace-networking --socket=/tmp/tailscaled.sock & sleep 5; TS_ARGS=\"--authkey=${TS_AUTHKEY} --hostname=${SERVER_NAME}\"; if [ \"${ENABLE_EXIT_NODE}\" = \"1\" ] || [ \"${ENABLE_EXIT_NODE}\" = \"true\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-exit-node\"; fi; if [ ! -z \"${TS_ROUTES}\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-routes=${TS_ROUTES}\"; fi; echo \"Starting with args: ${TS_ARGS}\"; ./tailscale --socket=/tmp/tailscaled.sock up ${TS_ARGS} && echo \"Tailscale is running...\" && wait"
     },
     "config": {
         "files": "{}",
         "startup": "{\n    \"done\": \"Tailscale is running...\"\n}",
         "logs": "{}",
-        "stop": "^^C"
+        "stop": "^C"
     },
     "scripts": {
         "installation": {
