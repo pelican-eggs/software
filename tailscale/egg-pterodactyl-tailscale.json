@@ -1,56 +1,36 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
-        "update_url": null,
-        "version": "PTDL_v2"
+        "version": "PTDL_v2",
+        "update_url": null
     },
-    "exported_at": "2026-02-07T16:43:17+00:00",
-    "name": "Tailscale VPN",
+    "exported_at": "2026-02-08T13:21:22+00:00",
+    "name": "Tailscale",
     "author": "yonn.apps@outlook.com",
     "description": "Runs Tailscale, a VPN for secure access to the local network.",
     "features": null,
     "docker_images": {
-        "ghcr.io/parkervcp/yolks:debian": "ghcr.io/parkervcp/yolks:debian"
+        "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"
     },
     "file_denylist": [],
-    "startup": "if [ ! -f ./tailscaled ]; then echo \"Binary missing, please Reinstall Server\"; exit 1; fi; ./tailscaled --state=tailscaled.state --tun=userspace-networking --socket=/tmp/tailscaled.sock & sleep 5; TS_ARGS=\"--authkey=${TS_AUTHKEY} --hostname=${SERVER_NAME}\"; if [ \"${ENABLE_EXIT_NODE}\" = \"1\" ] || [ \"${ENABLE_EXIT_NODE}\" = \"true\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-exit-node\"; fi; if [ ! -z \"${TS_ROUTES}\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-routes=${TS_ROUTES}\"; fi; echo \"Starting with args: ${TS_ARGS}\"; ./tailscale --socket=/tmp/tailscaled.sock up ${TS_ARGS} && echo \"Tailscale is running...\" && wait",
+    "startup": "if [ ! -f .\/tailscaled ]; then echo \"Binary missing, please Reinstall Server\"; exit 1; fi; .\/tailscaled --state=tailscaled.state --tun=userspace-networking --socket=\/tmp\/tailscaled.sock & sleep 5; TS_ARGS=\"--authkey=${TS_AUTHKEY} --hostname=${SERVER_NAME}\"; if [ \"${ENABLE_EXIT_NODE}\" = \"1\" ] || [ \"${ENABLE_EXIT_NODE}\" = \"true\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-exit-node\"; fi; if [ ! -z \"${TS_ROUTES}\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-routes=${TS_ROUTES}\"; fi; echo \"Starting with args: ${TS_ARGS}\"; .\/tailscale --socket=\/tmp\/tailscaled.sock up ${TS_ARGS} && echo \"Tailscale is running...\" && wait",
     "config": {
         "files": "{}",
+        "startup": "{\n    \"done\": \"Tailscale is running...\"\n}",
         "logs": "{}",
-        "startup": "{\r\n    \"done\": \"Tailscale is running...\"\r\n}",
         "stop": "^C"
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io/parkervcp/installers:debian",
-            "entrypoint": "bash",
-            "script": "#!/bin/bash\r\napt-get update\r\napt-get install -y curl tar ca-certificates\r\n\r\ncd /mnt/server\r\n\r\nrm -rf var tailscale.tgz tailscale_*\r\n\r\nARCH=$(uname -m)\r\ncase \"${ARCH}\" in\r\n    x86_64) ARCH=\"amd64\" ;;\r\n    aarch64) ARCH=\"arm64\" ;;\r\n    armv7l) ARCH=\"arm\" ;;\r\n    *) exit 1 ;;\r\nesac\r\n\r\nVERSION=$(curl -s https://api.github.com/repos/tailscale/tailscale/releases/latest | grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\\1/' | sed 's/v//')\r\n\r\nif [ -z \"$VERSION\" ]; then\r\n    echo \"Error getting version, falling back to 1.94.1\"\r\n    VERSION=\"1.94.1\"\r\nfi\r\n\r\necho \"Downloading Tailscale version ${VERSION}...\"\r\ncurl -L \"https://pkgs.tailscale.com/stable/tailscale_${VERSION}_${ARCH}.tgz\" -o tailscale.tgz\r\ntar xzf tailscale.tgz --strip-components=1\r\n\r\nrm tailscale.tgz\r\nrm -rf systemd\r\n\r\nchmod +x tailscaled tailscale"
+            "script": "#!\/bin\/bash\napt-get update\napt-get install -y curl tar ca-certificates\n\ncd \/mnt\/server\n\nrm -rf var tailscale.tgz tailscale_*\n\nARCH=$(uname -m)\ncase \"${ARCH}\" in\n    x86_64) ARCH=\"amd64\" ;;\n    aarch64) ARCH=\"arm64\" ;;\n    armv7l) ARCH=\"arm\" ;;\n    *) exit 1 ;;\nesac\n\nVERSION=$(curl -s https:\/\/api.github.com\/repos\/tailscale\/tailscale\/releases\/latest | grep '\"tag_name\":' | sed -E 's\/.*\"([^\"]+)\".*\/\\1\/' | sed 's\/v\/\/')\n\nif [ -z \"$VERSION\" ]; then\n    echo \"Error getting version, falling back to 1.94.1\"\n    VERSION=\"1.94.1\"\nfi\n\ncurl -L \"https:\/\/pkgs.tailscale.com\/stable\/tailscale_${VERSION}_${ARCH}.tgz\" -o tailscale.tgz\ntar xzf tailscale.tgz --strip-components=1\n\nrm tailscale.tgz\nrm -rf systemd\n\nchmod +x tailscaled tailscale",
+            "container": "debian:bookworm-slim",
+            "entrypoint": "bash"
         }
     },
     "variables": [
         {
-            "name": "Tailscale Auth Key",
-            "description": "Your Tailscale auth key (starts with tskey-auth...)",
-            "env_variable": "TS_AUTHKEY",
-            "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "required|string",
-            "field_type": "text"
-        },
-        {
-            "name": "Server Name",
-            "description": "Hostname for Tailscale to appear in your admin console.",
-            "env_variable": "SERVER_NAME",
-            "default_value": "tailscale-server",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "nullable|string",
-            "field_type": "text"
-        },
-        {
             "name": "Enable Exit Node",
-            "description": "Set to 1 to allow this server to act as an Exit Node. (0 = Disabled, 1 = Enabled)",
+            "description": "Enable this to allow this server to act as an Exit Node.",
             "env_variable": "ENABLE_EXIT_NODE",
             "default_value": "0",
             "user_viewable": true,
@@ -59,13 +39,33 @@
             "field_type": "text"
         },
         {
+            "name": "SERVER_NAME",
+            "description": "Hostname for Tailscale",
+            "env_variable": "SERVER_NAME",
+            "default_value": "tailscale-server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
             "name": "Subnet Routes",
-            "description": "Comma separated list of routes to advertise (Example: 192.168.1.0/24). Leave empty to disable.",
+            "description": "Comma separated list of routes to advertise (Example: 192.168.1.0\/24). Leave empty to disable.",
             "env_variable": "TS_ROUTES",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "TS_AUTHKEY",
+            "description": "Your Tailscale auth key (starts with tskey-auth...)",
+            "env_variable": "TS_AUTHKEY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
             "field_type": "text"
         }
     ]

@@ -4,7 +4,7 @@
         "version": "PLCN_v3",
         "update_url": null
     },
-    "exported_at": "2026-02-07T16:43:17+00:00",
+    "exported_at": "2026-02-08T13:21:22+00:00",
     "name": "Tailscale",
     "author": "yonn.apps@outlook.com",
     "uuid": "b1c7d2fa-1234-5678-90ab-cdef12345683",
@@ -27,9 +27,9 @@
     },
     "scripts": {
         "installation": {
+            "script": "#!/bin/bash\napt-get update\napt-get install -y curl tar ca-certificates\n\ncd /mnt/server\n\nrm -rf var tailscale.tgz tailscale_*\n\nARCH=$(uname -m)\ncase \"${ARCH}\" in\n    x86_64) ARCH=\"amd64\" ;;\n    aarch64) ARCH=\"arm64\" ;;\n    armv7l) ARCH=\"arm\" ;;\n    *) exit 1 ;;\nesac\n\nVERSION=$(curl -s https://api.github.com/repos/tailscale/tailscale/releases/latest | grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\\1/' | sed 's/v//')\n\nif [ -z \"$VERSION\" ]; then\n    echo \"Error getting version, falling back to 1.94.1\"\n    VERSION=\"1.94.1\"\nfi\n\ncurl -L \"https://pkgs.tailscale.com/stable/tailscale_${VERSION}_${ARCH}.tgz\" -o tailscale.tgz\ntar xzf tailscale.tgz --strip-components=1\n\nrm tailscale.tgz\nrm -rf systemd\n\nchmod +x tailscaled tailscale",
             "container": "debian:bookworm-slim",
-            "entrypoint": "bash",
-            "script": "#!/bin/bash\napt-get update\napt-get install -y curl tar ca-certificates\n\ncd /mnt/server\n\nrm -rf var tailscale.tgz tailscale_*\n\nARCH=$(uname -m)\ncase \"${ARCH}\" in\n    x86_64) ARCH=\"amd64\" ;;\n    aarch64) ARCH=\"arm64\" ;;\n    armv7l) ARCH=\"arm\" ;;\n    *) exit 1 ;;\nesac\n\nVERSION=$(curl -s https://api.github.com/repos/tailscale/tailscale/releases/latest | grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\\1/' | sed 's/v//')\n\nif [ -z \"$VERSION\" ]; then\n    echo \"Error getting version, falling back to 1.94.1\"\n    VERSION=\"1.94.1\"\nfi\n\ncurl -L \"https://pkgs.tailscale.com/stable/tailscale_${VERSION}_${ARCH}.tgz\" -o tailscale.tgz\ntar xzf tailscale.tgz --strip-components=1\n\nrm tailscale.tgz\nrm -rf systemd\n\nchmod +x tailscaled tailscale"
+            "entrypoint": "bash"
         }
     },
     "variables": [
