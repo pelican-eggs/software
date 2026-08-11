@@ -52,6 +52,10 @@
 
 * [Reposilite](/reposilite)
 
+### Tailscale
+
+* [Tailscale](/tailscale)
+
 ### Uptime Kuma
 
 * [Uptime Kuma](/uptime-kuma)
