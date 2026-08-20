@@ -1,5 +1,9 @@
 ## [Software](/software/)
 
+### ArchiSteamFarm
+
+* [ArchiSteamFarm](/archsteamfarm)
+
 ### Code Server
 
 * [Code-Server](/code-server)
