@@ -1,0 +1,97 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PELICAN PANEL",
+    "meta": {
+        "version": "PLCN_v3",
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/software/main/archsteamfarm/egg-archi-steam-farm.json"
+    },
+    "exported_at": "2026-08-20T14:40:18+00:00",
+    "name": "ArchiSteamFarm",
+    "author": "contact@piotrunius.dev",
+    "uuid": "b91baed3-8d9c-471e-8f24-0f9ba7157e5c",
+    "description": "ArchiSteamFarm (ASF) is a C# application that allows you to farm Steam cards using multiple Steam accounts simultaneously. It features a web-based IPC interface for remote management.\n\nhttps://github.com/JustArchiNET/ArchiSteamFarm",
+    "tags": [
+        "steam",
+        "farming",
+        "bot"
+    ],
+    "features": [],
+    "docker_images": {
+        "ghcr.io/pelican-eggs/yolks:debian": "ghcr.io/pelican-eggs/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup_commands": {
+        "Default": "./ArchiSteamFarm --no-restart {{ASF_ARGS}}"
+    },
+    "config": {
+        "files": "{}",
+        "startup": "{\n    \"done\": \"IPC server ready!\",\n    \"strip_ansi\": true\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\ncd /mnt/server\n\n# Download ASF\necho \"==> Downloading ArchiSteamFarm...\"\nif [ -n \"${ASF_URL}\" ]; then\n  curl -fsSL \"${ASF_URL}\" -o asf.zip\nelif [ \"${ASF_VERSION}\" = \"latest\" ] || [ -z \"${ASF_VERSION}\" ]; then\n  curl -fsSL \"https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest/download/ASF-linux-x64.zip\" -o asf.zip\nelse\n  curl -fsSL \"https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${ASF_VERSION}/ASF-linux-x64.zip\" -o asf.zip\nfi\n\nunzip -o asf.zip && rm -f asf.zip && chmod +x ArchiSteamFarm\n\n# Resolve IPC password: use provided value or generate a random one\nmkdir -p config\nif [ -n \"${IPC_PASSWORD}\" ]; then\n  IPC_PW=\"${IPC_PASSWORD}\"\nelse\n  IPC_PW=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 24)\n  echo \"==> IPC password: ${IPC_PW}\"\nfi\n\n# Write ASF.json global config\nprintf '{\"CurrentCulture\":\"en-US\",\"Headless\":true,\"IPC\":true,\"IPCPassword\":\"%s\",\"AutoRestart\":false}' \"$IPC_PW\" > config/ASF.json\n\n# Write IPC.config\nprintf '{\"Kestrel\":{\"Endpoints\":{\"HTTP\":{\"Url\":\"http://0.0.0.0:%s\"}}}}' \"${SERVER_PORT}\" > config/IPC.config\n\n# Set permissions: binary executable, config files restricted\nchmod 640 config/ASF.json config/IPC.config\n\necho \"==> Installation complete\"\necho \"==> IPC interface: http://${SERVER_IP}:${SERVER_PORT}\"",
+            "container": "ghcr.io/pelican-eggs/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "sort": 1,
+            "name": "ASF Version",
+            "description": "The version of ArchiSteamFarm to install. Use 'latest' for the most recent release.",
+            "env_variable": "ASF_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:20"
+            ]
+        },
+        {
+            "sort": 2,
+            "name": "IPC Password",
+            "description": "Password for the ASF web interface (IPC). Leave empty to generate a random password on install.",
+            "env_variable": "IPC_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string",
+                "alpha_dash",
+                "max:64"
+            ]
+        },
+        {
+            "sort": 3,
+            "name": "ASF Download URL Override",
+            "description": "Override the download URL. Leave empty to use the official GitHub release.",
+            "env_variable": "ASF_URL",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string",
+                "max:500"
+            ]
+        },
+        {
+            "sort": 4,
+            "name": "ASF Extra Arguments",
+            "description": "Extra command-line arguments passed to ASF on startup.",
+            "env_variable": "ASF_ARGS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string",
+                "max:200"
+            ]
+        }
+    ]
+}
