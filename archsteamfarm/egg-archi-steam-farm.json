@@ -20,7 +20,7 @@
     },
     "file_denylist": [],
     "startup_commands": {
-        "Default": "./ArchiSteamFarm --no-restart ${ASF_ARGS}"
+        "Default": "./ArchiSteamFarm --no-restart {{ASF_ARGS}}"
     },
     "config": {
         "files": "{}",
@@ -30,7 +30,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!/bin/bash\ncd /mnt/server\n\n# Download ASF\necho \"==> Downloading ArchiSteamFarm...\"\nif [ -n \"${ASF_URL}\" ]; then\n  curl -fsSL \"${ASF_URL}\" -o asf.zip\nelif [ \"${ASF_VERSION}\" = \"latest\" ] || [ -z \"${ASF_VERSION}\" ]; then\n  curl -fsSL \"https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest/download/ASF-linux-x64.zip\" -o asf.zip\nelse\n  curl -fsSL \"https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${ASF_VERSION}/ASF-linux-x64.zip\" -o asf.zip\nfi\n\nunzip -o asf.zip && rm -f asf.zip && chmod +x ArchiSteamFarm\n\n# Resolve IPC password: use provided value or generate a random one\nmkdir -p config\nif [ -n \"${IPC_PASSWORD}\" ]; then\n  echo \"==> Using provided IPC password\"\n  IPC_PW=\"${IPC_PASSWORD}\"\nelse\n  echo \"==> Generating random IPC password\"\n  IPC_PW=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 24)\nfi\n\n# Write ASF.json global config\nprintf '{\"CurrentCulture\":\"en-US\",\"Headless\":true,\"IPC\":true,\"IPCPassword\":\"%s\",\"AutoRestart\":false}' \"$IPC_PW\" > config/ASF.json\n\n# Write IPC.config\nprintf '{\"Kestrel\":{\"Endpoints\":{\"HTTP\":{\"Url\":\"http://0.0.0.0:%s\"}}}}' \"${SERVER_PORT}\" > config/IPC.config\n\nchmod -R 755 .\necho \"==> Installation complete\"\necho \"==> IPC interface: http://${SERVER_IP}:${SERVER_PORT}\"\necho \"==> IPC password:  ${IPC_PW}\"",
+            "script": "#!/bin/bash\ncd /mnt/server\n\n# Download ASF\necho \"==> Downloading ArchiSteamFarm...\"\nif [ -n \"${ASF_URL}\" ]; then\n  curl -fsSL \"${ASF_URL}\" -o asf.zip\nelif [ \"${ASF_VERSION}\" = \"latest\" ] || [ -z \"${ASF_VERSION}\" ]; then\n  curl -fsSL \"https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest/download/ASF-linux-x64.zip\" -o asf.zip\nelse\n  curl -fsSL \"https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${ASF_VERSION}/ASF-linux-x64.zip\" -o asf.zip\nfi\n\nunzip -o asf.zip && rm -f asf.zip && chmod +x ArchiSteamFarm\n\n# Resolve IPC password: use provided value or generate a random one\nmkdir -p config\nif [ -n \"${IPC_PASSWORD}\" ]; then\n  IPC_PW=\"${IPC_PASSWORD}\"\nelse\n  IPC_PW=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 24)\n  echo \"==> IPC password: ${IPC_PW}\"\nfi\n\n# Write ASF.json global config\nprintf '{\"CurrentCulture\":\"en-US\",\"Headless\":true,\"IPC\":true,\"IPCPassword\":\"%s\",\"AutoRestart\":false}' \"$IPC_PW\" > config/ASF.json\n\n# Write IPC.config\nprintf '{\"Kestrel\":{\"Endpoints\":{\"HTTP\":{\"Url\":\"http://0.0.0.0:%s\"}}}}' \"${SERVER_PORT}\" > config/IPC.config\n\n# Set permissions: binary executable, config files restricted\nchmod 640 config/ASF.json config/IPC.config\n\necho \"==> Installation complete\"\necho \"==> IPC interface: http://${SERVER_IP}:${SERVER_PORT}\"",
             "container": "ghcr.io/pelican-eggs/installers:debian",
             "entrypoint": "bash"
         }
@@ -61,6 +61,7 @@
             "rules": [
                 "nullable",
                 "string",
+                "alpha_dash",
                 "max:64"
             ]
         },
