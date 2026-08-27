@@ -6,7 +6,7 @@ RabbitMQ is the most widely deployed open source message broker.
 
 ## Installation
 
-Follow the common egg installation guide to install the egg on your Pterodactyl instance.
+Follow the common egg installation guide to install the egg on your Pelican instance.
 When setting up a server, the latest RabbitMQ version will be used by default.
 
 With pretty new and old versions of RabbitMQ, you might have to adjust the used Erlang version.
@@ -16,7 +16,7 @@ The latest version as of now requires you to use atleast ghcr.io/pterodactyl/yol
 
 ## Configuration
 
-Configuring RabbitMQ in Pterodactyl is only possible using the config files.
+Configuring RabbitMQ in Pelican is only possible using the config files.
 This means:
 
 - Configure the server itself as normal using `/home/container/etc/rabbitmq/rabbitmq.conf`
