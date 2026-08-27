@@ -6,7 +6,7 @@
     },
     "exported_at": "2026-08-03T07:52:07+00:00",
     "name": "5e Tools",
-    "author": "pelican@demi.cloud",
+    "author": "pterodactyl@demi.cloud",
     "description": "A suite of tools for 5th Edition Dungeons & Dragons players and Dungeon Masters.",
     "features": [],
     "docker_images": {
