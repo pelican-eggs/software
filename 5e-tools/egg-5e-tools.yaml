@@ -55,7 +55,7 @@ scripts:
         chmod +x caddy
         printf "\nGenerating Caddy configuration...\n"
         # this is a default config
-        # key variables, such as the port, will get overwritten with the pterodactyl
+        # key variables, such as the port, will get overwritten with the pelican
         # configuration parser
         cat <<EOF >"${DIR}/caddy.json"
       {
