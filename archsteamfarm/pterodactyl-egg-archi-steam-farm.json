@@ -4,20 +4,20 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2026-08-20T14:40:18+00:00",
+    "exported_at": "2026-10-05T07:43:27+00:00",
     "name": "ArchiSteamFarm",
     "author": "contact@piotrunius.dev",
     "description": "ArchiSteamFarm (ASF) is a C# application that allows you to farm Steam cards using multiple Steam accounts simultaneously. It features a web-based IPC interface for remote management. https:\/\/github.com\/JustArchiNET\/ArchiSteamFarm",
     "features": [],
     "docker_images": {
-        "ghcr.io\/pelican-eggs\/yolks:debian": "ghcr.io\/pelican-eggs\/yolks:debian"
+        "Debian": "ghcr.io\/pelican-eggs\/yolks:debian"
     },
     "file_denylist": [],
     "startup": ".\/ArchiSteamFarm --no-restart {{ASF_ARGS}}",
     "config": {
-        "files": "\"{}\"",
-        "startup": "\"{\\n    \\\"done\\\": \\\"IPC server ready!\\\",\\n    \\\"strip_ansi\\\": true\\n}\"",
-        "logs": "\"{}\"",
+        "files": "{}",
+        "startup": "{\n    \"done\": \"IPC server ready!\",\n    \"strip_ansi\": true\n}",
+        "logs": "{}",
         "stop": "^C"
     },
     "scripts": {
