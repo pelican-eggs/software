@@ -1,7 +1,7 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/pelican-software/refs/heads/main/5e-tools/egg-5e-tools.yaml'
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/5e-tools/egg-5e-tools.yaml'
 exported_at: '2026-08-03T07:52:07+00:00'
 name: '5e Tools'
 author: pterodactyl@demi.cloud
