@@ -6,12 +6,12 @@ Owncast is a self-hosted live video and web chat server for use with existing po
 
 ## Installation
 
-Follow the common egg installation guide to install the egg on your Pterodactyl instance.
+Follow the common egg installation guide to install the egg on your Pelican instance.
 When setting up a server, the version set in the varaible will be used, default is 0.0.11.
 
 ## Configuration
 
-Configuring Owncast in Pterodactyl can be done by using the command line switches:
+Configuring Owncast in Pelican can be done by using the command line switches:
 * -backupdir string
 	* Directory where backups will be written to
 * -database string
