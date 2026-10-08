@@ -57,7 +57,7 @@ scripts:
 
       echo -e "Download URL: $URL"
 
-      curl -fsSL -o forgejo "$URL"
+      curl -fsSL -o forgejo "$URL" || exit 1
 
       chmod +x forgejo
 
