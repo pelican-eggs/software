@@ -1,0 +1,89 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v3",
+        "update_url": null
+    },
+    "exported_at": "2026-02-20T16:53:49+00:00",
+    "name": "Tailscale",
+    "author": "yonn.apps@outlook.com",
+    "uuid": "b1c7d2fa-1234-5678-90ab-cdef12345683",
+    "description": "Runs Tailscale, a VPN for secure access to the local network.",
+    "image": "data:image/png;base64,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",
+    "tags": [],
+    "features": [],
+    "docker_images": {
+        "ghcr.io/parkervcp/yolks:debian": "ghcr.io/parkervcp/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup_commands": {
+        "Default": "if [ ! -f ./tailscaled ]; then echo \"Binary missing, please Reinstall Server\"; exit 1; fi; ./tailscaled --state=tailscaled.state --tun=userspace-networking --socket=/tmp/tailscaled.sock & sleep 5; TS_ARGS=\"--authkey=${TS_AUTHKEY} --hostname=${SERVER_NAME}\"; if [ \"${ENABLE_EXIT_NODE}\" = \"1\" ] || [ \"${ENABLE_EXIT_NODE}\" = \"true\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-exit-node\"; fi; if [ ! -z \"${TS_ROUTES}\" ]; then TS_ARGS=\"${TS_ARGS} --advertise-routes=${TS_ROUTES}\"; fi; echo \"Starting with args: ${TS_ARGS}\"; ./tailscale --socket=/tmp/tailscaled.sock up ${TS_ARGS} && echo \"Tailscale is running...\" && wait"
+    },
+    "config": {
+        "files": "{}",
+        "startup": "{\n    \"done\": \"Tailscale is running...\"\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\napt-get update\napt-get install -y curl tar ca-certificates\n\ncd /mnt/server\n\nrm -rf var tailscale.tgz tailscale_*\n\nARCH=$(uname -m)\ncase \"${ARCH}\" in\n    x86_64) ARCH=\"amd64\" ;;\n    aarch64) ARCH=\"arm64\" ;;\n    armv7l) ARCH=\"arm\" ;;\n    *) exit 1 ;;\nesac\n\nVERSION=$(curl -s https://api.github.com/repos/tailscale/tailscale/releases/latest | grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\\1/' | sed 's/v//')\n\nif [ -z \"$VERSION\" ]; then\n    echo \"Error getting version, falling back to 1.94.1\"\n    VERSION=\"1.94.1\"\nfi\n\ncurl -L \"https://pkgs.tailscale.com/stable/tailscale_${VERSION}_${ARCH}.tgz\" -o tailscale.tgz\ntar xzf tailscale.tgz --strip-components=1\n\nrm tailscale.tgz\nrm -rf systemd\n\nchmod +x tailscaled tailscale",
+            "container": "debian:bookworm-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Enable Exit Node",
+            "description": "Enable this to allow this server to act as an Exit Node.",
+            "env_variable": "ENABLE_EXIT_NODE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "boolean"
+            ],
+            "sort": 3
+        },
+        {
+            "name": "SERVER_NAME",
+            "description": "Hostname for Tailscale",
+            "env_variable": "SERVER_NAME",
+            "default_value": "tailscale-server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string"
+            ],
+            "sort": 1
+        },
+        {
+            "name": "Subnet Routes",
+            "description": "Comma separated list of routes to advertise (Example: 192.168.1.0/24). Leave empty to disable.",
+            "env_variable": "TS_ROUTES",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string"
+            ],
+            "sort": 4
+        },
+        {
+            "name": "TS_AUTHKEY",
+            "description": "Your Tailscale auth key (starts with tskey-auth...)",
+            "env_variable": "TS_AUTHKEY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string"
+            ],
+            "sort": 2
+        }
+    ]
+}
