@@ -1,0 +1,433 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-11-05T12:00:00+00:00",
+    "name": "Wavyzon",
+    "author": "anais.saraiva@ihorizon.org",
+    "description": "Standalone audio node for Discord bots, written in Rust: frame-accurate timing (wire clock), two-deck mixing and crossfades, pure-Rust DAVE end-to-end encryption, and Lavalink v4 compatibility so existing Lavalink clients work unchanged.\nBuilt from source at install time: https://gitlab.com/ihrz/wavyzon",
+    "features": null,
+    "docker_images": {
+        "Debian": "ghcr.io/pelican-eggs/yolks:debian",
+        "Ubuntu": "ghcr.io/pelican-eggs/yolks:ubuntu"
+    },
+    "file_denylist": [],
+    "startup": "WAVYZON_ADDRESS=0.0.0.0:{{SERVER_PORT}} ./wavyzon",
+    "config": {
+        "files": "{}",
+        "startup": "{\n    \"done\": \"wavyzon listening\"\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\n# Wavyzon - build from source in the stock installer image (ghcr.io/pelican-eggs/installers:debian).\n# CMake and a C compiler build libopus, which is linked statically; DAVE is pure Rust. The binary only\n# needs glibc, libm and libgcc_s at runtime, which the yolks debian/ubuntu images provide (their glibc\n# is newer than the installer's bookworm one).\nset -e\nexport DEBIAN_FRONTEND=noninteractive\n\napt-get update\napt-get install -y --no-install-recommends build-essential cmake\n\n# /tmp is a small tmpfs in the Wings install container: build on the server volume instead.\nBUILD=/mnt/server/.build\nif [ -d \"${BUILD}\" ]; then chmod -R u+w \"${BUILD}\"; rm -rf \"${BUILD}\"; fi\nmkdir -p \"${BUILD}/tmp\"\nexport TMPDIR=\"${BUILD}/tmp\"\nexport RUSTUP_HOME=\"${BUILD}/rustup\"\nexport CARGO_HOME=\"${BUILD}/cargo\"\nexport CARGO_TARGET_DIR=\"${BUILD}/target\"\nexport CARGO_INCREMENTAL=0\n# Fewer parallel jobs = less RAM. A release build needs ~1.5 GB per job.\nexport CARGO_BUILD_JOBS=\"${WAVYZON_BUILD_JOBS:-2}\"\nexport PATH=\"${CARGO_HOME}/bin:${PATH}\"\n\necho \"Installing the Rust toolchain...\"\ncurl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \\\n    | sh -s -- -y --no-modify-path --profile minimal --default-toolchain stable\ncargo --version\n\nREPO=\"${WAVYZON_REPO}\"\nif [ -n \"${WAVYZON_GIT_TOKEN}\" ]; then\n    # Private fork: https://oauth2:<token>@gitlab.com/...\n    REPO=\"$(printf '%s' \"${REPO}\" | sed -E \"s#^https://#https://oauth2:${WAVYZON_GIT_TOKEN}@#\")\"\nfi\necho \"Cloning ${WAVYZON_REPO} (${WAVYZON_REF})...\"\nif ! GIT_TERMINAL_PROMPT=0 git clone --depth 1 --branch \"${WAVYZON_REF}\" \"${REPO}\" \"${BUILD}/src\"; then\n    echo \"ERROR: could not clone ${WAVYZON_REPO} at ${WAVYZON_REF}.\"\n    echo \"For a private fork, set WAVYZON_GIT_TOKEN (GitLab access token with read_repository).\"\n    exit 1\nfi\ncd \"${BUILD}/src\"\necho \"Commit: $(git rev-parse --short HEAD)\"\n\n# Build with the stable toolchain installed above instead of adding the components that\n# rust-toolchain.toml asks for (rustfmt, clippy).\nrm -f rust-toolchain.toml\n\necho \"Building Wavyzon (jobs: ${CARGO_BUILD_JOBS})...\"\ncargo build --release --locked -p wavyzon --bin wavyzon\n\necho \"Copying files to /mnt/server...\"\ncp \"${CARGO_TARGET_DIR}/release/wavyzon\" /mnt/server/wavyzon\nchmod +x /mnt/server/wavyzon\ncp LICENSE NOTICE /mnt/server/ 2>/dev/null || true\nmkdir -p /mnt/server/data /mnt/server/cache\n# Leftovers of the previous egg version, which bundled glibc and started through a script.\nrm -rf /mnt/server/lib /mnt/server/start.sh\n\ncd /mnt/server\nchmod -R u+w \"${BUILD}\"\nrm -rf \"${BUILD}\"\n\nif [ ! -x /mnt/server/wavyzon ]; then\n    echo \"Installation failed\"\n    exit 1\nfi\n\necho \"Installation complete.\"\nexit 0",
+            "container": "ghcr.io/pelican-eggs/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Password",
+            "description": "Shared secret required on every request (Authorization header). Required; 'youshallnotpass' is refused.",
+            "env_variable": "WAVYZON_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|min:8|not_in:youshallnotpass",
+            "field_type": "text"
+        },
+        {
+            "name": "Git repository",
+            "description": "Repository built at install time.",
+            "env_variable": "WAVYZON_REPO",
+            "default_value": "https://gitlab.com/ihrz/wavyzon.git",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Branch or tag",
+            "description": "Branch or tag to build. Reinstall the server to update.",
+            "env_variable": "WAVYZON_REF",
+            "default_value": "main",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:100",
+            "field_type": "text"
+        },
+        {
+            "name": "Git token (private fork)",
+            "description": "Optional: the repository is public. GitLab access token (read_repository) only for a private fork.",
+            "env_variable": "WAVYZON_GIT_TOKEN",
+            "default_value": "",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Build jobs",
+            "description": "Parallel compile jobs during install (~1.5 GB of RAM each). Lower it if the install runs out of memory.",
+            "env_variable": "WAVYZON_BUILD_JOBS",
+            "default_value": "2",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|integer|between:1,32",
+            "field_type": "text"
+        },
+        {
+            "name": "Log level",
+            "description": "debug, info, warn or error.",
+            "env_variable": "WAVYZON_LOG_LEVEL",
+            "default_value": "info",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:debug,info,warn,error",
+            "field_type": "text"
+        },
+        {
+            "name": "Log format",
+            "description": "pretty (readable in the console) or json (one JSON line per event, for a log collector).",
+            "env_variable": "WAVYZON_LOG_FORMAT",
+            "default_value": "pretty",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:pretty,json",
+            "field_type": "text"
+        },
+        {
+            "name": "Buffer per deck (ms)",
+            "description": "Decoded audio buffered per deck (1000-60000).",
+            "env_variable": "WAVYZON_BUFFER_MS",
+            "default_value": "10000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:1000,60000",
+            "field_type": "text"
+        },
+        {
+            "name": "Default Opus bitrate",
+            "description": "Opus bitrate when the bot sends none (bps, 16000-384000).",
+            "env_variable": "WAVYZON_BITRATE",
+            "default_value": "96000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:16000,384000",
+            "field_type": "text"
+        },
+        {
+            "name": "Playout delay (ms)",
+            "description": "Measured delay between Discord receiving audio and listeners hearing it, added to audibleAt.",
+            "env_variable": "WAVYZON_PLAYOUT_DELAY_MS",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:0",
+            "field_type": "text"
+        },
+        {
+            "name": "Pause/resume fade (ms)",
+            "description": "0 = instant pause (0-2000).",
+            "env_variable": "WAVYZON_PAUSE_FADE_MS",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:0,2000",
+            "field_type": "text"
+        },
+        {
+            "name": "Resume timeout (s)",
+            "description": "How long players survive while their client is disconnected.",
+            "env_variable": "WAVYZON_RESUME_TIMEOUT_SECONDS",
+            "default_value": "300",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "playerUpdate interval (ms)",
+            "description": "How often playerUpdate is sent (min 250).",
+            "env_variable": "WAVYZON_UPDATE_INTERVAL_MS",
+            "default_value": "1000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:250",
+            "field_type": "text"
+        },
+        {
+            "name": "Search order",
+            "description": "Sources queried for a text search, in order.",
+            "env_variable": "WAVYZON_SEARCH_ORDER",
+            "default_value": "deezer,applemusic,spotify,soundcloud",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Playback sources",
+            "description": "Sources that actually play audio; tracks from other sources are matched to them by ISRC or title.",
+            "env_variable": "WAVYZON_PLAYBACK_SOURCES",
+            "default_value": "deezer,soundcloud",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Prefetch on loadtracks",
+            "description": "Preload the first result of each search so playback starts instantly.",
+            "env_variable": "WAVYZON_PREFETCH_ON_LOAD",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Analysis workers",
+            "description": "Offline analysis concurrency (1-64).",
+            "env_variable": "WAVYZON_ANALYSIS_WORKERS",
+            "default_value": "2",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:1,64",
+            "field_type": "text"
+        },
+        {
+            "name": "Analysis queue",
+            "description": "Maximum size of the analysis queue.",
+            "env_variable": "WAVYZON_ANALYSIS_QUEUE",
+            "default_value": "32",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1",
+            "field_type": "text"
+        },
+        {
+            "name": "Audio cache directory",
+            "description": "Disk cache directory (empty = disabled).",
+            "env_variable": "WAVYZON_AUDIO_CACHE_DIR",
+            "default_value": "/home/container/cache",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Audio cache size (GB)",
+            "description": "Disk cache limit (1-1000).",
+            "env_variable": "WAVYZON_AUDIO_CACHE_GB",
+            "default_value": "5",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:1,1000",
+            "field_type": "text"
+        },
+        {
+            "name": "Loudness normalization",
+            "description": "Bring every track to the same loudness.",
+            "env_variable": "WAVYZON_NORMALIZE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Target LUFS",
+            "description": "Loudness target (-30 to -5).",
+            "env_variable": "WAVYZON_NORMALIZE_LUFS",
+            "default_value": "-14",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:-30,-5",
+            "field_type": "text"
+        },
+        {
+            "name": "State file",
+            "description": "Sessions are saved here on shutdown and resumed after a restart (empty = disabled).",
+            "env_variable": "WAVYZON_STATE_FILE",
+            "default_value": "/home/container/state.json",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "HTTP source",
+            "description": "Play direct audio links (MP3, FLAC...) and Icecast/Shoutcast radios.",
+            "env_variable": "WAVYZON_HTTP_SOURCE",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "HTTP: private addresses",
+            "description": "Let the HTTP source reach the local network (10.x, 192.168.x, 127.0.0.1...). Keep false unless every client is trusted.",
+            "env_variable": "WAVYZON_HTTP_ALLOW_PRIVATE",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Local files directory",
+            "description": "Directory local tracks may be played from, e.g. /home/container/music (empty = disabled).",
+            "env_variable": "WAVYZON_LOCAL_ROOT",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Plugins",
+            "description": "Comma-separated plugins to enable (empty = every compiled-in plugin).",
+            "env_variable": "WAVYZON_PLUGINS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Deezer enabled",
+            "description": "Deezer search, links and playback.",
+            "env_variable": "DEEZER_ENABLED",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Deezer ARL",
+            "description": "Comma-separated Deezer account ARL cookies. Without them Deezer is metadata only.",
+            "env_variable": "DEEZER_ARL",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:500",
+            "field_type": "text"
+        },
+        {
+            "name": "Deezer ARL rotation",
+            "description": "failover, round-robin or random when several ARLs are set.",
+            "env_variable": "DEEZER_ARL_ROTATION",
+            "default_value": "failover",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:failover,round-robin,random",
+            "field_type": "text"
+        },
+        {
+            "name": "Deezer master key",
+            "description": "Deezer master key. Required with DEEZER_ARL for Deezer playback.",
+            "env_variable": "DEEZER_MASTER_KEY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        },
+        {
+            "name": "Deezer high quality",
+            "description": "Ask for 128 kbit/s MP3 (falling back to 64) instead of 64 only.",
+            "env_variable": "DEEZER_HIGH_QUALITY",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Spotify client ID",
+            "description": "Spotify Web API credentials (metadata only). Without them Spotify links don't resolve.",
+            "env_variable": "SPOTIFY_CLIENT_ID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:100",
+            "field_type": "text"
+        },
+        {
+            "name": "Spotify client secret",
+            "description": "Spotify Web API secret.",
+            "env_variable": "SPOTIFY_CLIENT_SECRET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:100",
+            "field_type": "text"
+        },
+        {
+            "name": "Apple Music storefront",
+            "description": "Apple Music catalogue storefront.",
+            "env_variable": "APPLE_MUSIC_STOREFRONT",
+            "default_value": "us",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:10",
+            "field_type": "text"
+        },
+        {
+            "name": "SoundCloud enabled",
+            "description": "SoundCloud search and playback.",
+            "env_variable": "SOUNDCLOUD_ENABLED",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Cache peers",
+            "description": "Other Wavyzon nodes to share the disk cache with, comma-separated URLs (empty = disabled).",
+            "env_variable": "WAVYZON_CACHE_PEERS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:500",
+            "field_type": "text"
+        },
+        {
+            "name": "Shared cache secret",
+            "description": "Same secret on every node; required by WAVYZON_CACHE_PEERS.",
+            "env_variable": "WAVYZON_CACHE_SECRET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Automatic crossfade (ms)",
+            "description": "Fade into the queued nextTrack before the current track ends (0-12000, 0 = strict gapless).",
+            "env_variable": "WAVYZON_CROSSFADE_MS",
+            "default_value": "3000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:0,12000",
+            "field_type": "text"
+        },
+        {
+            "name": "Lyrics (lyrics.ovh)",
+            "description": "Serve lyrics from lyrics.ovh on /v4/lyrics (LavaLyrics API).",
+            "env_variable": "LYRICS_ENABLED",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        }
+    ]
+}
