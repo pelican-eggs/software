@@ -60,6 +60,10 @@
 
 * [Uptime Kuma](/uptime-kuma)
 
+### Wavyzon
+
+* [Wavyzon](/wavyzon)
+
 ### Yarr
 
 * [yarr](/yarr)
