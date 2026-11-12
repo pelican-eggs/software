@@ -420,8 +420,28 @@
             "field_type": "text"
         },
         {
+            "name": "Lyrics provider order",
+            "description": "Lyrics providers asked in this order on /v4/lyrics (LavaLyrics API); the first that has lyrics answers. Names: genius, lrclib, lyricsovh.",
+            "env_variable": "WAVYZON_LYRICS_ORDER",
+            "default_value": "lrclib,lyricsovh,genius",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Lyrics (LRCLIB)",
+            "description": "Lyrics from LRCLIB, synced (timed lines) when it has them. No key.",
+            "env_variable": "LRCLIB_ENABLED",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
             "name": "Lyrics (lyrics.ovh)",
-            "description": "Serve lyrics from lyrics.ovh on /v4/lyrics (LavaLyrics API). With Genius on, asked only when Genius has none.",
+            "description": "Lyrics from lyrics.ovh (plain text). No key.",
             "env_variable": "LYRICS_ENABLED",
             "default_value": "true",
             "user_viewable": true,
@@ -431,7 +451,7 @@
         },
         {
             "name": "Genius lyrics",
-            "description": "Ask Genius for lyrics before lyrics.ovh (Genius has none or fails -> lyrics.ovh). false = lyrics.ovh only.",
+            "description": "Lyrics from Genius (last in the default order). false = no Genius.",
             "env_variable": "WAVYZON_PLUGIN_GENIUS_ENABLED",
             "default_value": "true",
             "user_viewable": true,
@@ -441,7 +461,7 @@
         },
         {
             "name": "Genius access token",
-            "description": "Recommended: Client Access Token from https://genius.com/api-clients. Without a key, genius.com's public search is used, which Genius often refuses from servers (lyrics.ovh then answers).",
+            "description": "Recommended: Client Access Token from https://genius.com/api-clients. Without a key, genius.com's public search is used, which Genius often refuses from servers (the next provider then answers).",
             "env_variable": "WAVYZON_PLUGIN_GENIUS_ACCESS_TOKEN",
             "default_value": "",
             "user_viewable": true,
@@ -471,7 +491,7 @@
         },
         {
             "name": "Genius timeout (ms)",
-            "description": "Bound of a whole Genius lookup (search + song page) before lyrics.ovh is asked (1000-60000).",
+            "description": "Bound of a whole Genius lookup (search + song page) before the next provider is asked (1000-60000).",
             "env_variable": "WAVYZON_PLUGIN_GENIUS_TIMEOUT_MS",
             "default_value": "10000",
             "user_viewable": true,

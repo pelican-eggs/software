@@ -30,4 +30,4 @@ The server is marked as started on the `wavyzon listening` log line. Stopping se
 * Every setting is a panel variable and maps 1:1 to the variables documented in the [configuration reference](https://gitlab.com/ihrz/wavyzon/-/blob/main/docs/src/configuration.md).
 * Spotify and Apple Music are metadata only: their tracks are matched by ISRC or title to the playback sources.
 * `HTTP: private addresses` stays `false` unless every client of the node is trusted.
-* Lyrics come from Genius first, then lyrics.ovh when Genius has none. Set `Genius access token` (a Client Access Token from [genius.com/api-clients](https://genius.com/api-clients)) for reliable Genius searches; without it Genius often refuses servers and lyrics.ovh answers.
+* Lyrics come from LRCLIB (synced, timed lines), then lyrics.ovh, then Genius; `Lyrics provider order` changes that (e.g. `genius,lrclib,lyricsovh`). Genius needs a key (`Genius access token`, from [genius.com/api-clients](https://genius.com/api-clients)) and its song pages often refuse servers.

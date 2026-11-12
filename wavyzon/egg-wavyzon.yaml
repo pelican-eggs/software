@@ -574,21 +574,21 @@ variables:
       - 'between:0,12000'
   -
     sort: 40
-    name: 'Lyrics (lyrics.ovh)'
-    description: 'Serve lyrics from lyrics.ovh on /v4/lyrics (LavaLyrics API). With Genius on, asked only when Genius has none.'
-    env_variable: LYRICS_ENABLED
-    default_value: 'true'
+    name: 'Lyrics provider order'
+    description: 'Lyrics providers asked in this order on /v4/lyrics (LavaLyrics API); the first that has lyrics answers. Names: genius, lrclib, lyricsovh.'
+    env_variable: WAVYZON_LYRICS_ORDER
+    default_value: 'lrclib,lyricsovh,genius'
     user_viewable: true
     user_editable: true
     rules:
-      - required
+      - nullable
       - string
-      - 'in:true,false'
+      - 'max:200'
   -
     sort: 41
-    name: 'Genius lyrics'
-    description: 'Ask Genius for lyrics before lyrics.ovh (Genius has none or fails -> lyrics.ovh). false = lyrics.ovh only.'
-    env_variable: WAVYZON_PLUGIN_GENIUS_ENABLED
+    name: 'Lyrics (LRCLIB)'
+    description: 'Lyrics from LRCLIB, synced (timed lines) when it has them. No key.'
+    env_variable: LRCLIB_ENABLED
     default_value: 'true'
     user_viewable: true
     user_editable: true
@@ -598,8 +598,32 @@ variables:
       - 'in:true,false'
   -
     sort: 42
+    name: 'Lyrics (lyrics.ovh)'
+    description: 'Lyrics from lyrics.ovh (plain text). No key.'
+    env_variable: LYRICS_ENABLED
+    default_value: 'true'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:true,false'
+  -
+    sort: 43
+    name: 'Genius lyrics'
+    description: 'Lyrics from Genius (last in the default order). false = no Genius.'
+    env_variable: WAVYZON_PLUGIN_GENIUS_ENABLED
+    default_value: 'true'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:true,false'
+  -
+    sort: 44
     name: 'Genius access token'
-    description: 'Recommended: Client Access Token from https://genius.com/api-clients. Without a key, genius.com''s public search is used, which Genius often refuses from servers (lyrics.ovh then answers).'
+    description: 'Recommended: Client Access Token from https://genius.com/api-clients. Without a key, genius.com''s public search is used, which Genius often refuses from servers (the next provider then answers).'
     env_variable: WAVYZON_PLUGIN_GENIUS_ACCESS_TOKEN
     default_value: ''
     user_viewable: true
@@ -609,7 +633,7 @@ variables:
       - string
       - 'max:200'
   -
-    sort: 43
+    sort: 45
     name: 'Genius client ID'
     description: 'Instead of the access token: API client id, exchanged for a token with the client secret. Set both or neither.'
     env_variable: WAVYZON_PLUGIN_GENIUS_CLIENT_ID
@@ -621,7 +645,7 @@ variables:
       - string
       - 'max:200'
   -
-    sort: 44
+    sort: 46
     name: 'Genius client secret'
     description: 'API client secret, with the client id.'
     env_variable: WAVYZON_PLUGIN_GENIUS_CLIENT_SECRET
@@ -633,9 +657,9 @@ variables:
       - string
       - 'max:200'
   -
-    sort: 45
+    sort: 47
     name: 'Genius timeout (ms)'
-    description: 'Bound of a whole Genius lookup (search + song page) before lyrics.ovh is asked (1000-60000).'
+    description: 'Bound of a whole Genius lookup (search + song page) before the next provider is asked (1000-60000).'
     env_variable: WAVYZON_PLUGIN_GENIUS_TIMEOUT_MS
     default_value: '10000'
     user_viewable: true
@@ -645,7 +669,7 @@ variables:
       - integer
       - 'between:1000,60000'
   -
-    sort: 46
+    sort: 48
     name: 'Flowery TTS'
     description: 'Text-to-speech source for ftts:// identifiers (LavaSrc-compatible, no API key). false = no ftts source.'
     env_variable: WAVYZON_PLUGIN_FLOWERY_ENABLED
