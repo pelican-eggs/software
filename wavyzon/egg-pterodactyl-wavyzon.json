@@ -421,8 +421,68 @@
         },
         {
             "name": "Lyrics (lyrics.ovh)",
-            "description": "Serve lyrics from lyrics.ovh on /v4/lyrics (LavaLyrics API).",
+            "description": "Serve lyrics from lyrics.ovh on /v4/lyrics (LavaLyrics API). With Genius on, asked only when Genius has none.",
             "env_variable": "LYRICS_ENABLED",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Genius lyrics",
+            "description": "Ask Genius for lyrics before lyrics.ovh (Genius has none or fails -> lyrics.ovh). false = lyrics.ovh only.",
+            "env_variable": "WAVYZON_PLUGIN_GENIUS_ENABLED",
+            "default_value": "true",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "Genius access token",
+            "description": "Recommended: Client Access Token from https://genius.com/api-clients. Without a key, genius.com's public search is used, which Genius often refuses from servers (lyrics.ovh then answers).",
+            "env_variable": "WAVYZON_PLUGIN_GENIUS_ACCESS_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Genius client ID",
+            "description": "Instead of the access token: API client id, exchanged for a token with the client secret. Set both or neither.",
+            "env_variable": "WAVYZON_PLUGIN_GENIUS_CLIENT_ID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Genius client secret",
+            "description": "API client secret, with the client id.",
+            "env_variable": "WAVYZON_PLUGIN_GENIUS_CLIENT_SECRET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Genius timeout (ms)",
+            "description": "Bound of a whole Genius lookup (search + song page) before lyrics.ovh is asked (1000-60000).",
+            "env_variable": "WAVYZON_PLUGIN_GENIUS_TIMEOUT_MS",
+            "default_value": "10000",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|between:1000,60000",
+            "field_type": "text"
+        },
+        {
+            "name": "Flowery TTS",
+            "description": "Text-to-speech source for ftts:// identifiers (LavaSrc-compatible, no API key). false = no ftts source.",
+            "env_variable": "WAVYZON_PLUGIN_FLOWERY_ENABLED",
             "default_value": "true",
             "user_viewable": true,
             "user_editable": true,
