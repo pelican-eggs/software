@@ -1,0 +1,210 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/software/refs/heads/main/pano/egg-pano.yaml'
+exported_at: '2026-10-29T14:55:21+00:00'
+name: Pano
+author: support@panomc.com
+uuid: 43dc3848-3f71-4832-9322-29250a668890
+description: |-
+  Pano is an open-source web platform for Minecraft servers: website, web store and management panel
+  in one. Create a database for the server (Databases tab) and fill the database variables, or enter
+  it in the setup wizard. https://panomc.com
+icon: null
+tags: {  }
+features: null
+docker_images:
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+  'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+file_denylist: {  }
+startup_commands:
+  Default: 'PANO_HTTP_PORT={{SERVER_PORT}} java -Xms64M -Xmx$(( ({{SERVER_MEMORY}} > 0 ? {{SERVER_MEMORY}} : 2048) * {{JAVA_RAM_PERCENT}} / 100 ))M -Duser.home=/home/container -jar $(cat .pano-jar) -nogui'
+config:
+  files: {  }
+  startup:
+    done: 'ready to rock & roll'
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # Pano egg install script (Pterodactyl / Pelican). Runs as root in ghcr.io/pterodactyl/installers:debian
+      # with the server's files at /mnt/server, on install and on every reinstall. It downloads the Pano jar
+      # (PANO_VERSION, or the newest of PANO_CHANNEL), checks its sha256 and points .pano-jar at it, the jar the
+      # startup command runs. Data (config.conf, plugins, themes, uploads) is never touched, so a reinstall
+      # is an upgrade.
+      set -euo pipefail
+
+      API_URL=${PANO_API_URL:-https://api.panomc.com}
+      VERSION=${PANO_VERSION:-latest}
+      CHANNEL=${PANO_CHANNEL:-release}
+      [ "$VERSION" = latest ] && VERSION=
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      json_field() { sed -n "s/.*\"$1\":\"\\([^\"]*\\)\".*/\\1/p"; }
+
+      # The release list answers {"data":{"release":[...],"beta":[...],"alpha":[...]}}, newest first.
+      # One release object per line, keeping the channel it came from in front of it.
+      releases=$(curl -fsSL "$API_URL/releases/platform" | sed 's/"\(release\|beta\|alpha\)":\[/\n@\1\n/g' | tr '{' '\n' |
+        awk '/^@/ { channel = substr($0, 2); next } /"releaseTag"/ { print channel " " $0 }') || releases=
+
+      if [ -n "$VERSION" ]; then
+        line=$(printf '%s\n' "$releases" | grep -F "\"releaseTag\":\"v${VERSION#v}\"" | head -n 1 || true)
+      else
+        line=$(printf '%s\n' "$releases" | grep "^$CHANNEL " | head -n 1 || true)
+      fi
+
+      if [ -n "$line" ]; then
+        tag=$(printf '%s' "$line" | json_field releaseTag)
+        url=$(printf '%s' "$line" | json_field downloadUrl)
+        hash=$(printf '%s' "$line" | json_field hash)
+        hash=${hash#sha256:}
+      elif [ -n "$VERSION" ]; then
+        # older than what the list holds: straight from the GitHub release
+        tag="v${VERSION#v}"
+        url="https://github.com/PanoMC/Pano/releases/download/$tag/Pano-${tag#v}.jar"
+        hash=$(curl -fsSL "$url.sha256" 2>/dev/null | cut -d' ' -f1 || true)
+      else
+        echo "No Pano release found in the $CHANNEL channel ($API_URL/releases/platform)." >&2
+        exit 1
+      fi
+
+      jar="Pano-${tag#v}.jar"
+      current=$(cat .pano-jar 2>/dev/null || true)
+
+      if [ -f "$jar" ] && [ -n "$hash" ] && [ "$(sha256sum "$jar" | cut -d' ' -f1)" = "$hash" ]; then
+        echo "Pano ${tag#v} is already installed."
+      else
+        echo "Downloading Pano ${tag#v}..."
+        curl -fsSL --retry 3 -o "$jar.part" "$url"
+        if [ -n "$hash" ]; then
+          actual=$(sha256sum "$jar.part" | cut -d' ' -f1)
+          if [ "$actual" != "$hash" ]; then
+            rm -f "$jar.part"
+            echo "Checksum mismatch for $jar: expected $hash, got $actual" >&2
+            exit 1
+          fi
+        fi
+        mv -f "$jar.part" "$jar"
+      fi
+
+      # Same layout as Pano's JarPointer: .pano-jar names the jar, .pano-jar.previous the one before it.
+      if [ -n "$current" ] && [ "$current" != "$jar" ] && [ -f "$current" ]; then
+        printf '%s' "$current" >.pano-jar.previous
+      fi
+      printf '%s' "$jar" >.pano-jar
+      for old in Pano-*.jar; do
+        [ "$old" = "$jar" ] || [ "$old" = "$(cat .pano-jar.previous 2>/dev/null || true)" ] || rm -f "$old"
+      done
+
+      echo "Pano ${tag#v} installed. Start the server, then open its address to finish the setup wizard."
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Database host'
+    description: |-
+      MariaDB / MySQL host. Read on the first start only; leave empty to enter the database in the setup
+      wizard.
+    env_variable: PANO_DB_HOST
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:255'
+    sort: 4
+  -
+    name: 'Database name'
+    description: 'Name of the database.'
+    env_variable: PANO_DB_NAME
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:64'
+    sort: 6
+  -
+    name: 'Database password'
+    description: 'Database password.'
+    env_variable: PANO_DB_PASSWORD
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:255'
+    sort: 8
+  -
+    name: 'Database port'
+    description: 'MariaDB / MySQL port.'
+    env_variable: PANO_DB_PORT
+    default_value: 3306
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - integer
+      - 'between:1,65535'
+    sort: 5
+  -
+    name: 'Database user'
+    description: 'Database user name.'
+    env_variable: PANO_DB_USER
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:64'
+    sort: 7
+  -
+    name: 'Java memory (%)'
+    description: |-
+      Share of the server memory the JVM may use. The rest is left to the website processes Pano runs next
+      to it (usually 50 MB, at most 200 MB each).
+    env_variable: JAVA_RAM_PERCENT
+    default_value: 50
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - integer
+      - 'between:25,90'
+    sort: 3
+  -
+    name: 'Pano version'
+    description: |-
+      A version such as 1.1.0, or latest for the newest release of the channel below. Reinstall the server
+      to apply; Pano can also update itself from its panel.
+    env_variable: PANO_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:40'
+    sort: 1
+  -
+    name: 'Release channel'
+    description: 'Channel that latest installs from: release, beta or alpha.'
+    env_variable: PANO_CHANNEL
+    default_value: release
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:release,beta,alpha'
+    sort: 2

@@ -48,6 +48,10 @@
 
 * [owncast](/owncast)
 
+### Pano
+
+* [Pano](/pano)
+
 ### RabbitMQ
 
 * [rabbitmq](/rabbitmq)
