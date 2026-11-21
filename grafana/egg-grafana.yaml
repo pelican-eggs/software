@@ -60,7 +60,7 @@ scripts:
 
       echo "-----------------------------------------"
       echo "Installation completed..."
-      echo "-----------------------------------------
+      echo "-----------------------------------------"
     container: 'ghcr.io/pelican-eggs/installers:debian'
     entrypoint: bash
 variables:
